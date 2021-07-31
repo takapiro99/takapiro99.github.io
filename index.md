@@ -9,3 +9,13 @@
 | セッション1<br/><small>19:00~19:15</small>  | Text     | Text     |Text|Text|Text|
 | 19:00~19:15  | Text     | Text     |Text|Text|Text|
 | 19:00~19:15  | Text     | Text     |Text|Text|Text|
+
+
+<ul>
+  {% for post in site.posts %}
+    <li>
+      <a href="{{ post.url }}">{{ post.title }}</a>
+    </li>
+  {% endfor %}
+</ul>
+
