@@ -1,21 +1,29 @@
-# Welcome to my page
+<!-- {{site.baseurl}}はレポジトリの設定によっては/sample...で上手く出来ない時があるので必要 -->
 
-### topics
+# takapiro99 のページ
 
-- this site is now under construction...
+---
 
-|  | 2（金） | 9（金） | 13 (土) | 23（金） | 30（金） |
-| -------- | -------- | -- | -- |--|--|
-| セッション1<br/><small>19:00~19:15</small>  | Text     | Text     |Text|Text|Text|
-| 19:00~19:15  | Text     | Text     |Text|Text|Text|
-| 19:00~19:15  | Text     | Text     |Text|Text|Text|
+<br/>
 
+#### 今年の記事
 
-<ul>
-  {% for post in site.posts %}
-    <li>
-      <a href="{{ post.url }}">{{ post.title }}</a>
-    </li>
-  {% endfor %}
+<ul> <!-- 2021年の記事一覧 -->
+{% for post in site.posts reversed %}
+    {% capture year %}{{ post.date | date: "%Y" }}{% endcapture %}
+    {% assign currentYear = 'now' | date: "%Y" %}
+    {% if currentYear == year %}
+      <li>{{ post.date | date: "%m 月 "}}<a href="{{ post.url }}">{{ post.title }}</a></li>
+    {% endif %}
+{% endfor %}
 </ul>
 
+<br/>
+
+### [全ての記事を見る](/activities)
+
+<br/>
+
+---
+
+<a class="twitter-timeline" data-height="600" data-theme="light" href="https://twitter.com/takapiro_99?ref_src=twsrc%5Etfw">Tweets by huitgroup</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
