@@ -11,7 +11,7 @@
 <body>
   <div style="padding: 10px;">
     <p style="color:#444">status:&nbsp; <span id="status">loading</span></p>
-    <p style="color:#444">status:&nbsp; <span id="status2"></span></p>
+    <p style="color:#444"><span id="status2"></span></p>
     <p id="out" style="border:2px solid grey">
     <ul id="li" style="list-style: none;"></ul>
     </p>
@@ -57,8 +57,8 @@
   try {
     const canBleScan = !!navigator.bluetooth.requestLEScan
     if (!canBleScan) {
-      status.innerHTML = `BLE非対応です。以下のフラグを有効にして、再ロードしてください！
-      <a href="chrome://flags/#enable-experimental-web-platform-features">chrome://flags/#enable-experimental-web-platform-features<a/>
+      status.innerHTML = `BLE非対応です。chromeの場合、以下にアクセスし&nbsp;<code>enable-experimental-web-platform-features</code>&nbsp;フラグを有効にして、再ロードしてください！
+      &nbsp;<small>chrome://flags/#enable-experimental-web-platform-features</small>&nbsp;
   `
     } else {
       status.innerHTML = `web bluetooth enabled
