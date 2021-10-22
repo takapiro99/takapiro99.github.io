@@ -51,7 +51,7 @@
         index = ids.indexOf(id)
         counter += 1
         // console.log(index)
-        li.innerHTML = `<li style="background: ${colors[index]}">${counter} - ${new Date().toLocaleTimeString()} - <span>${id}</span> - rssi:<b>${event.rssi}</b> txPower:<b>${event.txPower}</b></li>` + li.innerHTML
+        li.innerHTML = `<li style="background: ${colors[index]};width:600px;">${counter} - ${new Date().toLocaleTimeString()} - <span>${id}</span> - rssi:<b>${event.rssi}</b> txPower:<b>${event.txPower}</b></li>` + li.innerHTML
       });
     }).catch((e) => {
       status2.innerHTML = `requestLEScan error: <span style="background:tomato">${e.toString()}</span>`
