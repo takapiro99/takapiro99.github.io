@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div style="padding: 100px;">
+    hello page
+    <p style="color:#444">status:&nbsp; <span id="status">loading</span></p>
+    <p id="out" style="border:2px solid grey">
+    <ul id="li" style="list-style: none;"></ul>
+    </p>
+  </div>
+</body>
+<script>
+  console.log('hello')
+
+  const bleScan = () => {
+    navigator.bluetooth.requestLEScan({
+      // filters: [],
+      keepRepeatedDevices: true,
+      acceptAllAdvertisements: true
+    }).then(() => {
+      navigator.bluetooth.addEventListener('advertisementreceived', event => {
+        console.log(event);
+        li.innerHTML += `<li>${new Date().toLocaleTimeString()} - ${event.device.id} - rssi:${event.rssi} txPower:${event.txPower}</li>`
+      });
+    })
+  }
+
+  const canBleScan = !!navigator.bluetooth.requestLEScan
+  const status = document.getElementById("status")
+  const out = document.getElementById("out")
+  if (!canBleScan) {
+    status.innerHTML = `BLE非対応です。以下のフラグを有効にして、再ロードしてください！
+    <a href="chrome://flags/#enable-experimental-web-platform-features">chrome://flags/#enable-experimental-web-platform-features<a/>
+`
+  } else {
+    status.innerHTML = `web bluetooth enabled
+    <button onclick="bleScan()">start scan</button>
+`
+  }
+
+
+
+//   appearance: 0
+// bubbles: true
+// cancelBubble: false
+// cancelable: true
+// composed: false
+// currentTarget: Bluetooth {onadvertisementreceived: null}
+// defaultPrevented: false
+// device: BluetoothDevice {id: 'J+uQZsA1D7Si/SdofazcQg==', name: null, gatt: BluetoothRemoteGATTServer, ongattserverdisconnected: null, watchingAdvertisements: false, …}
+// eventPhase: 0
+// isTrusted: true
+// manufacturerData: BluetoothManufacturerDataMap {size: 0}
+// name: null
+// path: []
+// returnValue: true
+// rssi: 31
+// serviceData: BluetoothServiceDataMap {size: 0}
+// srcElement: Bluetooth {onadvertisementreceived: null}
+// target: Bluetooth {onadvertisementreceived: null}
+// timeStamp: 18496.800000000745
+// txPower: -128
+// type: "advertisementreceived"
+// uuids: []
+
+</script>
+
+</html>
