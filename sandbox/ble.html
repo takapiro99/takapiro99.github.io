@@ -12,6 +12,7 @@
   <div style="padding: 10px;">
     <p style="color:#444">status:&nbsp; <span id="status">loading</span></p>
     <p style="color:#444"><span id="status2"></span></p>
+    <p style="color:#444;background: #ccc;"><small id="status3"></small></p>
     <div id="out" style="border:2px solid grey;max-height: 500px;width:100%;overflow: scroll;">
       <ul id="li" style="list-style: none;width: 100%;"></ul>
     </div>
@@ -28,6 +29,7 @@
   let ids = []
   const status = document.getElementById("status")
   const status2 = document.getElementById("status2")
+  const status3 = document.getElementById("status3")
   const out = document.getElementById("out")
   let started = false
   let eventLister = null;
@@ -47,6 +49,7 @@
         let index = -1
         if (!ids.filter((s) => (s === id)).length) {
           ids = [...ids, id]
+          status3.innerHTML = `&nbsp;${ids.length} ids detected`
         }
         index = ids.indexOf(id)
         counter += 1
