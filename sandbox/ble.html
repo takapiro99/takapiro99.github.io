@@ -5,12 +5,13 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>BLE checker</title>
 </head>
 
 <body>
   <div style="padding: 10px;">
     <p style="color:#444">status:&nbsp; <span id="status">loading</span></p>
+    <p style="color:#444">status:&nbsp; <span id="status2"></span></p>
     <p id="out" style="border:2px solid grey">
     <ul id="li" style="list-style: none;"></ul>
     </p>
@@ -25,8 +26,10 @@
     "#af87d7", "#af87ff", "#afaf00", "#afaf5f", "#afaf87", "#afafaf", "#afafd7", "#afafff", "#afd700", "#afd75f", "#afd787", "#afd7af", "#afd7d7", "#afd7ff", "#afff00", "#afff5f", "#afff87", "#afffaf", "#afffd7", "#afffff", "#d70000", "#d7005f", "#d70087", "#d700af", "#d700d7", "#d700ff", "#d75f00", "#d75f5f", "#d75f87", "#d75faf", "#d75fd7", "#d75fff", "#d78700", "#d7875f", "#d78787", "#d787af", "#d787d7", "#d787ff", "#d7af00", "#d7af5f", "#d7af87", "#d7afaf", "#d7afd7", "#d7afff", "#d7d700", "#d7d75f", "#d7d787", "#d7d7af", "#d7d7d7", "#d7d7ff", "#d7ff00", "#d7ff5f", "#d7ff87", "#d7ffaf", "#d7ffd7", "#d7ffff", "#ff0000", "#ff005f", "#ff0087", "#ff00af", "#ff00d7", "#ff00ff", "#ff5f00", "#ff5f5f", "#ff5f87", "#ff5faf", "#ff5fd7", "#ff5fff", "#ff8700", "#ff875f", "#ff8787", "#ff87af", "#ff87d7", "#ff87ff", "#ffaf00", "#ffaf5f", "#ffaf87", "#ffafaf", "#ffafd7",
     "#ffafff", "#ffd700", "#ffd75f", "#ffd787", "#ffd7af", "#ffd7d7", "#ffd7ff", "#ffff00", "#ffff5f", "#ffff87", "#ffffaf", "#ffffd7", "#ffffff", "#080808", "#121212", "#1c1c1c", "#262626", "#303030", "#3a3a3a", "#444444", "#4e4e4e", "#585858", "#626262", "#6c6c6c", "#767676", "#808080", "#8a8a8a", "#949494", "#9e9e9e", "#a8a8a8", "#b2b2b2", "#bcbcbc", "#c6c6c6", "#d0d0d0", "#dadada", "#e4e4e4", "#eeeeee"]
   const ids = []
+  const status = document.getElementById("status")
+  const status2 = document.getElementById("status2")
+  const out = document.getElementById("out")
 
-  console.log('hello')
   let counter = 0
   const bleScan = () => {
     navigator.bluetooth.requestLEScan({
@@ -34,6 +37,7 @@
       keepRepeatedDevices: true,
       acceptAllAdvertisements: true
     }).then(() => {
+      console.log("requestLEScan() fired")
       navigator.bluetooth.addEventListener('advertisementreceived', event => {
         console.log(event);
         const id = event.device.id
@@ -46,20 +50,23 @@
         counter += 1
         li.innerHTML = `<li>${counter} - ${new Date().toLocaleTimeString()} - <span style="background: ${colors[index]}">${id}</span> - rssi:${event.rssi} txPower:${event.txPower}</li>` + li.innerHTML
       });
+    }).catch((e) => {
+      status2.innerHTML = `requestLEScan error: <span style="background:tomato">${e.toString()}</span>`
     })
   }
-
-  const canBleScan = !!navigator.bluetooth.requestLEScan
-  const status = document.getElementById("status")
-  const out = document.getElementById("out")
-  if (!canBleScan) {
-    status.innerHTML = `BLE非対応です。以下のフラグを有効にして、再ロードしてください！
-    <a href="chrome://flags/#enable-experimental-web-platform-features">chrome://flags/#enable-experimental-web-platform-features<a/>
-`
-  } else {
-    status.innerHTML = `web bluetooth enabled
-    <button onclick="bleScan()">start scan</button>
-`
+  try {
+    const canBleScan = !!navigator.bluetooth.requestLEScan
+    if (!canBleScan) {
+      status.innerHTML = `BLE非対応です。以下のフラグを有効にして、再ロードしてください！
+      <a href="chrome://flags/#enable-experimental-web-platform-features">chrome://flags/#enable-experimental-web-platform-features<a/>
+  `
+    } else {
+      status.innerHTML = `web bluetooth enabled
+      <button onclick="bleScan()">start scan</button>
+  `
+    }
+  } catch (error) {
+    status.innerHTML = `<span style="background:tomato">${error.toString()}</span>`
   }
 
 
