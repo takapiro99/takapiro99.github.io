@@ -9,8 +9,7 @@
 </head>
 
 <body>
-  <div style="padding: 100px;">
-    hello page
+  <div style="padding: 10px;">
     <p style="color:#444">status:&nbsp; <span id="status">loading</span></p>
     <p id="out" style="border:2px solid grey">
     <ul id="li" style="list-style: none;"></ul>
@@ -19,7 +18,7 @@
 </body>
 <script>
   console.log('hello')
-
+  let counter = 0
   const bleScan = () => {
     navigator.bluetooth.requestLEScan({
       // filters: [],
@@ -28,7 +27,8 @@
     }).then(() => {
       navigator.bluetooth.addEventListener('advertisementreceived', event => {
         console.log(event);
-        li.innerHTML += `<li>${new Date().toLocaleTimeString()} - ${event.device.id} - rssi:${event.rssi} txPower:${event.txPower}</li>`
+        counter += 1
+        li.innerHTML = `<li>${counter} - ${new Date().toLocaleTimeString()} - ${event.device.id} - rssi:${event.rssi} txPower:${event.txPower}</li>` + li.innerHTML
       });
     })
   }
