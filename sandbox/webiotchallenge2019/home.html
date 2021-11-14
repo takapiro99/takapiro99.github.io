@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <title>smart life</title>
+    <script type="text/javascript">
+      function cam_home_change() {
+        const home_cam = document.getElementById("home_cam");
+        if (home_cam.style.display == "block") {
+          //noneで非表示
+          home_cam.style.display = "none";
+        } else {
+          //blockで表示
+          home_cam.style.display = "block";
+        }
+      }
+      function onlight() {
+        var light = document.getElementById("light");
+        light.src = "./image/denkyuu_on.png";
+      }
+      function offlight() {
+        var light = document.getElementById("light");
+        light.src = "./image/denkyuu_off.png";
+      }
+      function onfan() {
+        var fan = document.getElementById("fan");
+        fan.src = "./image/kaden_hanenashi_senpuki_kaze.png";
+      }
+      function offfan() {
+        var fan = document.getElementById("fan");
+        fan.src = "./image/kaden_hanenashi_senpuki.png";
+      }
+      window.onload = function Comfort() {
+        var temp = "{{HomeT}}";
+        var object = document.getElementById("Comfort");
+        var string = document.getElementById("status");
+        if (temp > 28) {
+          object.src = "./image/Htempicon3.png";
+          string.textContent = "熱いよ～～～!!";
+        } else if (temp < 10) {
+          object.src = "./image/Htempicon2.png";
+          string.textContent = "寒いよ～～～!!";
+        } else {
+          object.src = "./image/Htempicon.png";
+          string.textContent = "快適!!!!!!!!!!";
+        }
+      };
+      window.onload = function doorsensor() {
+        var door = ture;
+        door = "{{HomeD}}";
+        var object = document.getElementById("dooricon");
+        var string = document.getElementById("door");
+        if (door !== ture) {
+          object.src = "./image/door_half_open.png";
+          string.textContent = "open!!!!";
+        } else {
+          object.src = "./image/door_close,png";
+          string.src = "close";
+        }
+      };
+    </script>
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <script>
+      $(function () {
+        // Ajax button click
+        $("#light-on").on("click", function () {
+          $.ajax({
+            url: "153.126.132.81/light/on",
+            type: "POST",
+            data: {},
+          });
+        });
+        $("#light-off").on("click", function () {
+          $.ajax({
+            url: "153.126.132.81/light/off",
+            type: "POST",
+            data: {},
+          });
+        });
+        $("#fan-on").on("click", function () {
+          $.ajax({
+            url: "153.126.132.81/fan/on",
+            type: "POST",
+            data: {},
+          });
+        });
+        $("#fan-off").on("click", function () {
+          $.ajax({
+            url: "153.126.132.81/fan/off",
+            type: "POST",
+            data: {},
+          });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div id="logo" onclick="location.href='/'" style="cursor: pointer">
+      <img src="./image/logo.png" />
+    </div>
+    <header>
+      ><a href="/sandbox/webiotchallenge2019/index.html">メイン画面へ戻る</a>
+    </header>
+    <div id="title">
+      <img src="./image/homeB.png" />
+    </div>
+    <div class="cameramode">
+      <button onclick="cam_home_change()" class="cameramode">
+        <img
+          src="./image/kaden_camera_compact.png"
+          alt="カメラ的な"
+          width="100px"
+        />
+      </button>
+    </div>
+    <div id="home_cam">
+      <img src="" alt="カメラ起動時はここに描画" />
+    </div>
+
+    <div id="sensor">
+      <div class="box">
+        <img
+          src="./image/ondokei.png"
+          alt="ここにいい感じの画像"
+          height="300px"
+        />
+        <p>温度</p>
+        <p>{{HomeT}}度</p>
+      </div>
+      <div class="box">
+        <img
+          id="light"
+          src="./image/denkyuu_off.png"
+          alt="ここにもいい感じの画像"
+          height="300px"
+        />
+        <p>電気スイッチ</p>
+        <input id="light-on" type="button" value="on" onclick="onlight()" />
+        <input id="light-off" type="button" value="off" onclick="offlight()" />
+        <ul id="light-result" class="ajax"></ul>
+      </div>
+      <div class="box">
+        <img
+          id="dooricon"
+          src="./image/door_close.png"
+          alt="ここにもいい感じの画像"
+          height="300px"
+        />
+        <p>ドアチェッカー</p>
+        <p id="door">sensor not activate</p>
+      </div>
+      <div class="box">
+        <img
+          id="Comfort"
+          src="./image/Htempicon.png"
+          alt="ここにもいい感じの画像"
+          height="300px"
+        />
+        <p>快適度</p>
+        <p id="status">sensor not activate</p>
+      </div>
+    </div>
+  </body>
+</html>

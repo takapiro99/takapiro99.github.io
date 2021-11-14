@@ -1,0 +1,148 @@
+/*index.html*/
+body {
+  background-color: #b1f3ab;
+}
+#title {
+  text-align: center;
+  margin-bottom: 10px;
+  margin-top: 0px;
+}
+#logo {
+       text-align: center;
+  margin-bottom: 10px;
+  margin-top: 0px;
+
+}
+#fieldbutton {
+  background-color: #15db68;
+  border-radius: 10px;
+  height: 300px;
+      width: 300px;
+  float: right;
+  margin-right: 10px;
+}
+#fieldbutton:hover {
+        opacity:0.5;
+}
+        
+#homebutton {
+  background-color: #3bb5fc;
+  border-radius: 10px;
+  height:300px;
+      width: 300px;
+  margin-left: 10px;
+
+}
+#homebutton:hover {
+  opacity:0.5;
+}
+
+h1 {
+  margin-top: 0px;
+  text-align: center;
+}
+.kuma {
+  position: absolute;
+  bottom: 0;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+}
+.coment{
+  position: relative;
+  margin-top: 100px;
+  text-align: center;
+  width:100%;
+}
+#hukidashi {
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+.buttonname {
+  font-size: 20px;
+}
+#text {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: calc(50% - 45px); 
+  text-align: center; 
+  color: darkblue; 
+  font-weight: bold; 
+  line-height: 40px;
+}
+/*field.html*/
+#field_cam {
+  display: none;
+  text-align: center;
+  width: 640px;
+  height: 480px;
+  background-color: #665f5f;
+  margin-right:auto;
+  margin-left: auto;
+      margin-bottom:10px;
+  padding-bottom:10px;
+}
+#sensor {
+  width: 99%;
+  min-width: 640px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  display: box;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -o-box;
+  display: -ms-box;
+  box-pack: justify;
+  -moz-box-pack: justify;
+  -webkit-box-pack: justify;
+  -o-box-pack: justify;
+  -ms-box-pack: justify; 
+  background-color: #aaaaaa;
+  border-radius: 10px;
+  height:400px;
+}
+.box {
+  width:300px;
+  height:400px;
+  text-align: center;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+}
+.box2 {
+        width:300px;
+        height:400px;
+  text-align: center;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.end {
+  clear: both;
+}
+#home_cam {
+  display: none;
+  text-align: center;
+  width: 640px;
+  height: 480px;
+  background-color: #665f5f;
+  margin-right:auto;
+  margin-left: auto;
+        margin-bottom:10px;
+  padding-bottom:10px;
+}
+#cmb {
+  text-align: center;
+}
+.cameramode {
+  margin-bottom:10px;
+  color: #FFFFFF;
+  border-radius:10px;	    
+  text-align:center;
+}
+#glass {
+margin-top:30px;
+}
