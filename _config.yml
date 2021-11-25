@@ -1,6 +1,6 @@
 lang: "ja"
 title: takapiro99 のページ
-# description: 北海道大学の学生を中心とした IT 系学生サークルです
+description: takapiro99 のページ
 theme: jekyll-theme-slate
 exclude:
   - "docker-compose.yml"
@@ -12,3 +12,4 @@ twitter:
 # logo: /huit_logo_white.png
 future: true
 locale: ja_JP
+google_analytics: UA-213664706-1
