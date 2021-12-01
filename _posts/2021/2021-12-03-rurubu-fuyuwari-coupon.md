@@ -82,7 +82,7 @@ HUIT のツイッター（[@huitgroup](https://twitter.com/huitgroup)）、ぜ�
 
 #### `robots.txt`
 
-12/03 時点で
+12/01 時点で
 
 ```
 User-agent: *
@@ -162,11 +162,11 @@ const boundingClientRect = await page.evaluate(async () => {
       x: t.left,
       y: t.top,
       width: t.width,
-      height: t.height
+      height: t.height,
     };
   }
   return {
-    result: "no"
+    result: "no",
   };
 });
 ```
@@ -242,6 +242,8 @@ const boundingClientRect = await page.evaluate(async () => {
 
 さくらの VPS なんて借りてないからな～って思ったみなさん、 ~~[ぜひ借りてください。](https://vps.sakura.ad.jp/)~~ 無料枠の firebase functions の定期実行で同じことができると思います（無料）。firebase ってめちゃくちゃ無料枠でかくてエンジニアとしてはありがたいですよね。大人になったらそんな素敵なものを作りたいなあ。
 
+作業時間的には調査から完成まで 4h くらいだったかなと思います。JPHacks のタスクもあるなか、実はこっそりこれも作っていました。
+
 <br/>
 
 ---
@@ -254,12 +256,11 @@ const boundingClientRect = await page.evaluate(async () => {
 
 おわり
 
-
 <br/>
 <br/>
 
 #### 参考にしたもの
 
-- 【2020年度版】個人用クローラーの開発手順とその注意点 [https://qiita.com/nezuq/items/9e297d0e3468c24e8afa](https://qiita.com/nezuq/items/9e297d0e3468c24e8afa)
-- puppeteerで始めるブラウザ操作の自動化 [https://www.cresco.co.jp/blog/entry/15215/](https://www.cresco.co.jp/blog/entry/15215/)
+- 【2020 年度版】個人用クローラーの開発手順とその注意点 [https://qiita.com/nezuq/items/9e297d0e3468c24e8afa](https://qiita.com/nezuq/items/9e297d0e3468c24e8afa)
+- puppeteer で始めるブラウザ操作の自動化 [https://www.cresco.co.jp/blog/entry/15215/](https://www.cresco.co.jp/blog/entry/15215/)
 - その他各公式サイト
