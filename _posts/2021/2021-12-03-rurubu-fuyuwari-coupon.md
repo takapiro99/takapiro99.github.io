@@ -5,13 +5,23 @@ title: 冬割クーポン、どうしてもほしい
 published: false
 ---
 
+この記事は、[HUIT アドベントカレンダー 2021](https://qiita.com/advent-calendar/2021/huit) の 3 日目の記事です。
+
+HUIT のツイッター（[@huitgroup](https://twitter.com/huitgroup)）、ぜひフォローしてね～
+
+<br/>
+
+---
+
 [**さぁ！サッポロ冬割 & 冬も泊まってスマイルキャンペーン**](https://sapporo-winter2020.com/) をご存じだろうか
 
-そう、ホテルに泊まるだけでお金がもらえるというすごいキャンペーンです。
+そう、ホテルに泊まるだけでお金がもらえる<sup>[1](#note1)</sup>というすごいキャンペーンです。
 
 前回（2020 夏割）に引き続き、クーポンの争奪戦が始まっています。
 
 色んなサイトから予約できますが、今回はクーポンを少しずつ放出してくれていた **るるぶ** に注目しました。
+
+<small id="note1">1. お金はもらえない。飲食店で使えるクーポンがもらえる。</small>
 
 ---
 
@@ -19,7 +29,7 @@ published: false
 
 ## 作ったもの
 
-**10 分に一回クーポン有無を取得し、あったら通知を送ってくれるくん**
+**4 分に一回クーポン有無を取得し、あったら通知を送ってくれるくん**
 
 技術： `node.js` `puppetier` `crontab`
 
@@ -27,21 +37,21 @@ published: false
 
 ### 作るきっかけ
 
-たまーに数十枚～数百枚のクーポンが放流され、それが数十分で売り切れていくという仕様になっていました。
+今年のるるぶトラベルは、たまーに数十枚～数百枚のクーポンが放流され、それが毎回数十分で売り切れていくという仕様になっていました。
 
-クーポンがあるときじゃないと冬割適用にならないため、みんなそのタイミングを狙って予約する訳です。初期のころは、アンテナの敏感な友達が「今クーポンでてるよー」と教えてくれて知っていました。
+クーポンがあるときじゃないと冬割適用にならないため、みんなそのタイミングを狙って予約する訳です。初期のころは、アンテナの敏感な友達が「今クーポンでてるよー」と教えてくれてました。
 
 おれ「でもスクレイピングで通知してくれたら便利じゃね？puppetier ちょうど興味あったし」
 
 ということで、作り始めました。
 
-<br/>
+<!-- <br/>
 
 ### サイトを観察する
 
 たくさんカードがあって
 
-クリックするとモーダルがでてきて、ここを開いて **初めて** あるかないかが分かります。
+クリックするとモーダルがでてきて、ここを開いて **初めて** あるかないかが分かります。 -->
 
 <br/>
 
@@ -64,7 +74,7 @@ published: false
 
 > 当社の承諾なく、本サービスにより得られる情報を、自己の私的利用以外の目的で複製・送信する行為、又は方法の如何を問わず第三者による利用に供する行為
 
-規約はこんな感じ。ギリセーフかな
+規約はこんな感じ。セーフかな
 
 <small>（[https://www.rurubu.travel/content/terms-of-use/](https://www.rurubu.travel/content/terms-of-use/)）</small>
 
@@ -103,8 +113,6 @@ python か JavaScript で少し迷いましたが、より速く作りたかっ�
 
 `$ npm i puppeteer`
 
-します。
-
 <br/>
 
 ##### 次に、取得するべき DOM のセレクタを観察してみます
@@ -126,54 +134,82 @@ python か JavaScript で少し迷いましたが、より速く作りたかっ�
 
 <br/>
 
-テストをするのに用いたのか分かりませんが、`data-selenium` という attribute がついていたのはラッキーだと思いました。
+テストをするのに用いたのか分かりませんが、`data-selenium` という attribute がついていたのは分かりやすくてラッキーでしたね！
 
 <br/>
 
 ### coding time
 
-[https://gist.github.com/takapiro99/070c0efe133fa91b11bdfa198c1826e3](https://gist.github.com/takapiro99/070c0efe133fa91b11bdfa198c1826e3)
-
-<br/>
-
 抜粋して紹介します。
 
-`page.evaluate()` の部分は、JavaScript をブラウザで実行させ、クーポンがあった場合には要素の場所と大きさを返します。完全になんとなくで、 `sleep()` つけました。
+`page.evaluate()` の中身をブラウザで実行させ、スクショすべき要素の **場所** と **大きさ** を返します。あとは、完全になんとなくで、 `sleep()` つけました。
 
 ```js
 const boundingClientRect = await page.evaluate(async () => {
-  const sleep = (msec) => new Promise((resolve) => setTimeout(resolve, msec)); // スコープが完全に別なので、この中で sleep を定義するよ
+  const sleep = (msec) => new Promise((resolve) => setTimeout(resolve, msec)); // スコープが完全に別なので、この中で sleep を定義するよ // async いらないの？って思ったけど、省略記法で返り値が Promise なので動く
   const couponCardSelector = ".CouponsGroupCard__title";
   const popupSelector = `[data-selenium="coupons-popup"]`;
   const couponAvailableSelector = `[data-selenium="coupon-card-popup-available"]`;
-  const targetCardElement = Array.from(
-    document.querySelectorAll(couponCardSelector)
-  ).filter((ele) => ele.textContent.startsWith("【さぁ！サッポロ冬割】"))[0];
+  const targetCardElement = Array.from(document.querySelectorAll(couponCardSelector)).filter((ele) => ele.textContent.startsWith("【さぁ！サッポロ冬割】"))[0];
   if (targetCardElement) {
     targetCardElement.parentElement.parentElement.click(); // カードをクリックし、モーダルを出現させる
     await sleep(1000);
     const popupElement = document.querySelector(popupSelector);
-    const isCouponAvailable = popupElement.querySelector(
-      couponAvailableSelector
-    );
-    const t = popupElement.getBoundingClientRect();
+    const isCouponAvailable = popupElement.querySelector(couponAvailableSelector);
+    const t = popupElement.getBoundingClientRect(); // この命名はテキトー
     return {
       result: !!isCouponAvailable,
       x: t.left,
       y: t.top,
       width: t.width,
-      height: t.height,
+      height: t.height
     };
   }
   return {
-    result: "no",
+    result: "no"
   };
 });
 ```
 
-### puppeteer の要素の取得のしかた
+コード全容 ↓
 
-サーっと検索すると
+[https://gist.github.com/takapiro99/070c0efe133fa91b11bdfa198c1826e3](https://gist.github.com/takapiro99/070c0efe133fa91b11bdfa198c1826e3)
+
+<br/>
+
+### 実際に動かす
+
+お遊び用に借りているさくらインターネットの VPS(ubuntu18) で、`crontab` を設定しました。HUIT メンバーなら伝わる、火の鳥でおなじみの `crontab` です。
+
+`$ crontab -e` で編集
+
+次に以下を入れます。crontab ってデフォルトだと PATH が通されていない（なぜ？）なのでフルパスで実行させてみました。ついでにログも吐き出すようにしてみました。なんかかっこいいので。
+
+`*/4 * * * * cd /home/takapiro/rurubu-scraper; /usr/local/bin/node ./main.js >> /home/takapiro/cron.log 2>&1`
+
+<br/>
+
+ネット上には、編集したらコマンドで restart しましょう！と言っている記事もありましたが、`$ man crontab` に
+
+> After you exit from the editor, the modified crontab will be installed automatically.
+
+とあったので、保存したらすぐ動くようになります。公式マニュアルは偉大です。
+
+<br/>
+
+### 結果
+
+![image](/assets/2021/rurubu-notification.png)
+
+動きました。やった～
+
+クーポンが放流される時間の傾向や、なくなっていくペースも観察できました。
+
+<br/>
+
+### ところで、puppeteer について
+
+要素の取得のしかたをググると
 
 - `page.$(selector)`
 - `page.$$(selector)`
@@ -198,20 +234,32 @@ const boundingClientRect = await page.evaluate(async () => {
 
 <br/>
 
-今回はとりあえず動けばいいやの精神だったので、生の JavaScript で `page.evaluate()` しました。実際のブラウザで試せる半面、デバッグが難しいのでちゃんとやるなら `page.$eval()` を使ったらきれいだったと思います。
+今回はとりあえず動けばいいやの精神だったので、生の JavaScript で `page.evaluate()` しました。実際のブラウザと同じなので親しみやすい半面、console が見づらいなどデバッグが難しいので、ちゃんとやるなら `page.$eval()` を使ったらきれいだったと思います。
 
-### 結果
+### 感想など
 
-動きました。良かったです！
+スクレイピングと `crontab`、知ってたけど触ったことなくて触ってみたいなと思ってたので、形にすることができて良かったです。
 
-クーポンが放流される時間の傾向や、なくなっていくペースも観察できました。
+さくらの VPS なんて借りてないからな～って思ったみなさん、 ~~[ぜひ借りてください。](https://vps.sakura.ad.jp/)~~ 無料枠の firebase functions の定期実行で同じことができると思います（無料）。firebase ってめちゃくちゃ無料枠でかくてエンジニアとしてはありがたいですよね。大人になったらそんな素敵なものを作りたいなあ。
 
 <br/>
 
-### 感想
+---
 
-楽しかったです。
+<br/>
+
+明日は、 JPHacks で共に戦った @usk314 くんの記事です！楽しみですね
 
 <br/>
 
 おわり
+
+
+<br/>
+<br/>
+
+#### 参考にしたもの
+
+- 【2020年度版】個人用クローラーの開発手順とその注意点 [https://qiita.com/nezuq/items/9e297d0e3468c24e8afa](https://qiita.com/nezuq/items/9e297d0e3468c24e8afa)
+- puppeteerで始めるブラウザ操作の自動化 [https://www.cresco.co.jp/blog/entry/15215/](https://www.cresco.co.jp/blog/entry/15215/)
+- その他各公式サイト
