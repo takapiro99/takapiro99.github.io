@@ -1,10 +1,14 @@
 ---
 layout: post
-title: 冬割クーポン、どうしてもほしい
+title: 冬割クーポン、どうしてもほしい！
 # image: /huit_logo_white.png
 ---
 
 この記事は、[HUIT アドベントカレンダー 2021](https://qiita.com/advent-calendar/2021/huit) の 3 日目の記事です。
+
+さて昨日は、この前冬割で泊まってたホテルの朝食会場でエンカした [@rinaohmura](https://twitter.com/rinaohmura) による「新卒一年目レポート」（[https://note.com/rinaohmura/n/n0adc5b2858f6](https://note.com/rinaohmura/n/n0adc5b2858f6)）でした！あと知らんうちにアウトドアになっててウケました。今度山登り行きましょう🏃
+
+<br/>
 
 HUIT のツイッター（[@huitgroup](https://twitter.com/huitgroup)）、ぜひフォローしてね～
 
@@ -122,6 +126,8 @@ python か JavaScript で少し迷いましたが、より速く作りたかっ�
 
 ##### 次に、取得するべき DOM のセレクタを観察してみます
 
+![image](/assets/2021/rurubu-explained.png)
+
 結果、
 
 1. `.CouponsGroupCard__title` の要素に 「【さぁ！サッポロ冬割】…」とある要素を探す
@@ -132,8 +138,6 @@ python か JavaScript で少し迷いましたが、より速く作りたかっ�
 ということが分かりました。
 
 これに対して、もしクーポンがあれば `[data-selenium="coupons-popup"]` の範囲をスクショし、 discord に送信することにしました。
-
-![image](/assets/2021/rurubu-explained.png)
 
 <!-- <br/> -->
 
@@ -149,7 +153,9 @@ python か JavaScript で少し迷いましたが、より速く作りたかっ�
 
 抜粋して紹介します。
 
-`page.evaluate()` の中身をブラウザで実行させ、スクショすべき要素の **場所** と **大きさ** を返します。あとは、完全になんとなくで、 `sleep()` つけました。
+`page.evaluate()` の中身をブラウザで実行させ、スクショすべき要素の **場所** と **大きさ** を返します。
+
+あとは、完全になんとなくで、 `sleep()` つけました。
 
 ```js
 const boundingClientRect = await page.evaluate(async () => {
@@ -158,7 +164,7 @@ const boundingClientRect = await page.evaluate(async () => {
   const popupSelector = `[data-selenium="coupons-popup"]`;
   const couponAvailableSelector = `[data-selenium="coupon-card-popup-available"]`;
   const targetCardElement = Array.from(document.querySelectorAll(couponCardSelector)).filter((ele) => ele.textContent.startsWith("【さぁ！サッポロ冬割】"))[0];
-  if (targetCardElement) {
+  if (targetCardElement) { // クーポンがあった！
     targetCardElement.parentElement.parentElement.click(); // カードをクリックし、モーダルを出現させる
     await sleep(1000);
     const popupElement = document.querySelector(popupSelector);
