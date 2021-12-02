@@ -206,6 +206,10 @@ const boundingClientRect = await page.evaluate(async () => {
 
 <br/>
 
+これで友達と転々と冬割でホテルに泊まりに行ってみています。めでたしめでたし
+
+<br/>
+
 ### ところで、puppeteer について
 
 要素の取得のしかたをググると
