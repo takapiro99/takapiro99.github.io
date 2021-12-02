@@ -6,7 +6,7 @@ title: 冬割クーポン、どうしてもほしい！
 
 この記事は、[HUIT アドベントカレンダー 2021](https://qiita.com/advent-calendar/2021/huit) の 3 日目の記事です。
 
-さて昨日は、この前冬割で泊まってたホテルの朝食会場でエンカした [@rinaohmura](https://twitter.com/rinaohmura) による「新卒一年目レポート」（[https://note.com/rinaohmura/n/n0adc5b2858f6](https://note.com/rinaohmura/n/n0adc5b2858f6)）でした！あと知らんうちにアウトドアになっててウケました。今度山登り行きましょう🏃
+さて昨日は、[@rinaohmura](https://twitter.com/rinaohmura) による「新卒一年目レポート」（[https://note.com/rinaohmura/n/n0adc5b2858f6](https://note.com/rinaohmura/n/n0adc5b2858f6)）でした！知らんうちにアウトドアになっててウケました。今度山登り行きましょう🏃
 
 <br/>
 
