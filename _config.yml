@@ -13,3 +13,5 @@ twitter:
 future: true
 locale: ja_JP
 google_analytics: "UA-213664706-1"
+gems:
+  - jekyll-sitemap
