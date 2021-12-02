@@ -2,7 +2,6 @@
 layout: post
 title: 冬割クーポン、どうしてもほしい
 # image: /huit_logo_white.png
-published: false
 ---
 
 この記事は、[HUIT アドベントカレンダー 2021](https://qiita.com/advent-calendar/2021/huit) の 3 日目の記事です。
@@ -212,6 +211,10 @@ const boundingClientRect = await page.evaluate(async () => {
 動きました。やった～
 
 クーポンが放流される時間の傾向や、なくなっていくペースも観察できました。
+
+<br/>
+
+これで友達と転々と冬割でホテルに泊まりに行ってみています。めでたしめでたし
 
 <br/>
 
