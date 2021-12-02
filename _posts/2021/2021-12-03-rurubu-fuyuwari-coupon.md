@@ -186,7 +186,7 @@ const boundingClientRect = await page.evaluate(async () => {
 
 コード全容 ↓
 
-[https://gist.github.com/takapiro99/070c0efe133fa91b11bdfa198c1826e3](https://gist.github.com/takapiro99/070c0efe133fa91b11bdfa198c1826e3)
+[https://gist.github.com/takapiro99/070c...](https://gist.github.com/takapiro99/070c0efe133fa91b11bdfa198c1826e3)
 
 <br/>
 
@@ -236,8 +236,8 @@ const boundingClientRect = await page.evaluate(async () => {
 
 の 5 種があるよと出てきて、意味が分かりません。こういうときこそ公式 doc です。超分かりやすかったです。
 
-[https://github.com/puppeteer/puppeteer/blob/main/docs/api.md#pageselector](https://github.com/puppeteer/puppeteer/blob/main/docs/api.md#pageselector)  
-[https://github.com/puppeteer/puppeteer/blob/main/docs/api.md#pageevaluatepagefunction-args](https://github.com/puppeteer/puppeteer/blob/main/docs/api.md#pageevaluatepagefunction-args)
+[puppeteer/puppeteer/blob/main/docs/api.md#pagesele...](https://github.com/puppeteer/puppeteer/blob/main/docs/api.md#pageselector)  
+[puppeteer/puppeteer/blob/main/docs/api.md#pageeval...](https://github.com/puppeteer/puppeteer/blob/main/docs/api.md#pageevaluatepagefunction-args)
 
 <br/>
 
