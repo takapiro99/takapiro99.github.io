@@ -20,11 +20,22 @@
 
 <br/>
 
-### [全ての記事を見る](/activities)
+### [全ての記事があるコーナー](/activities)
 
 <br/>
 
 ---
+
+<br/>
+
+### [LT など登壇資料コーナー](/slides)
+<!-- <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vR1hfalWql0VkNYJLLm5ElVBWYgT2v_YqFykRX_pSUS1EJJ5ujF5rQg5AGxFLQb5DzUJvpPaEMKgxoa/embed?start=false&loop=false&delayms=3000" frameborder="0" width="480" height="299" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe> -->
+
+<br/>
+
+---
+
+<br/>
 
 ### Tweet コーナー
 
