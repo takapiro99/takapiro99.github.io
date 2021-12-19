@@ -5,7 +5,7 @@ title: 活動記録一覧
 
 <p class="end-of-content"><a href="/">←&nbsp;Home</a></p>
 
-# takapiro99 の記事
+# 全ての記事
 
 ---
 
@@ -21,7 +21,7 @@ title: 活動記録一覧
     {% if year != pyear %}
       <!-- 新しい年だったとき -->
       </ul>
-      <li><h3>{{ post.date | date: '%Y' }} 年</h3></li>
+      <li><h3 id="{{ post.date | date: '%Y' }}">{{ post.date | date: '%Y' }} 年</h3></li>
       <ul>
         <li>{{ post.date | date: "%m月" }} <a href="{{ post.url }}">{{ post.title }}</a></li>
     {% else %}

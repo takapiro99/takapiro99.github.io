@@ -1,17 +1,89 @@
-lang: "ja"
-title: takapiro99 のページ
-description: takapiro99 のページ
-theme: jekyll-theme-slate
+remote_theme: forever-jekyll/forever-jekyll
 exclude:
   - "docker-compose.yml"
   - "README.md"
 permalink: /:year/:title
-twitter:
-  username: takapiro_99
-  card: summary_large_image
-# logo: /huit_logo_white.png
+timezone: Asia/Tokyo
 future: true
-locale: ja_JP
-google_analytics: "UA-213664706-1"
+
+# google_analytics: "UA-213664706-1"
+# locale: ja_JP
+# lang: "ja"
+
+#
+# This file contains configuration flags to customize your site
+#
+
+# Name of your site (displayed in the header)
+name: Takahiro Nishino のページ
+
+# Short bio or description (displayed in the header)
+description: ようこそ
+
+# URL of your avatar or profile pic (you could use your GitHub profile pic)
+avatar: https://avatars.githubusercontent.com/u/55702777?v=4
+
+#
+# Flags below are optional
+#
+
+# Used for Sitemap.xml and your RSS feed
+url: https://takapiro99.github.io
+
+# If you're hosting your site at a Project repository on GitHub pages
+# (http://yourusername.github.io/repository-name)
+# and NOT your User repository (http://yourusername.github.io)
+# then add in the baseurl here, like this: "/repository-name"
+baseurl: ""
+
+# Navigation menu
+navigation_links:
+  - title: Search
+    url: /search
+
+# Footer icons
+footer_links:
+  - title: Twitter
+    url: https://twitter.com/takapiro_99
+    icon: fa fa-twitter-square
+
+  - title: GitHub
+    url: https://github.com/takapiro99
+    icon: fa fa-github-square
+
+# Enter your copyright text if you wish to override the default one.
+#copyright: "This site is made with <3 by *me, myself, and I*."
+
+#
+# !! You don't need to change any of the configuration flags below !!
+#
+
+# permalink: pretty
+
+# Jekyll 3 now only supports Kramdown for Markdown
+kramdown:
+  # Use GitHub flavored markdown, including triple backtick fenced code blocks
+  input: GFM
+  # Jekyll 3 and GitHub Pages now support rouge for syntax highlighting
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    # Use existing pygments syntax highlighting css
+    css_class: "highlight"
+
+# Pagination
+paginate: 5
+paginate_path: "/page/:num/"
+
+# Set the Sass partials directory, as we're using @imports
+sass:
+  sass_dir: _sass
+  style: :expanded # You might prefer to minify using :compressed
+
+# Use the following plug-ins
 gems:
-  - jekyll-sitemap
+  - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
+  - jekyll-gist
+  - jekyll-paginate
+  - jekyll-seo-tag
+  - jemoji
+  # - jekyll-feed # Create an Atom feed using the official Jekyll feed gem
