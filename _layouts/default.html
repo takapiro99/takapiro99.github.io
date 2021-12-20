@@ -92,6 +92,19 @@
       </footer>
     </div>
   </div>
+  <script>
+    $(function () {
+      return $("h2, h3, h4, h5, h6").each(function (i, el) {
+        var $el, icon, id;
+        $el = $(el);
+        id = $el.attr('id');
+        icon = '<i class="fa fa-link" style="margin-right: 10px;"></i>';
+        if (id) {
+          return $el.prepend($("<a />").addClass("header-link").attr("href", "#" + id).html(icon));
+        }
+      });
+    });
+  </script>
 
   <!-- currently no video -->
   <!-- <script defer src="https://cdn.plyr.io/3.6.8/plyr.js"></script>
@@ -141,23 +154,7 @@
       const darkmode = new Darkmode(options);
             darkmode.showWidget();
     </script> -->
-  <script>
-    $(function () {
-      return $("h2, h3, h4, h5, h6").each(function (i, el) {
-        console.log("hi")
-        var $el, icon, id;
-        $el = $(el);
-        id = $el.attr('id');
-        icon = '<i class="fa fa-link" style="margin-right: 10px;"></i>';
-        if (id) {
-          return $el.prepend($("<a />").addClass("header-link").attr("href", "#" + id).html(icon));
-        }
-      });
-    });
 
-
-
-  </script>
 
 </body>
 
