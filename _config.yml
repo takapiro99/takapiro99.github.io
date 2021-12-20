@@ -38,6 +38,8 @@ baseurl: ""
 
 # Navigation menu
 navigation_links:
+  - title: Blog
+    url: /activities
   - title: Search
     url: /search
 

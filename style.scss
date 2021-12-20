@@ -488,13 +488,16 @@ a[href^="#fnref:"] {
   }
 }
 
+// edited
 .site-name {
   margin: 0;
   color: $darkGray;
   font-family: $sans-font-family;
-  font-weight: 300;
-  font-size: 28px !important;
-  letter-spacing: 01px;
+  // font-weight: 300;
+  font-weight: 400;
+  // font-size: 28px !important;
+  font-size: 24px !important;
+  letter-spacing: 1px;
 
   a {
     &:hover {

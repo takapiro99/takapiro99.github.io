@@ -33,8 +33,9 @@
     integrity="sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=" crossorigin="anonymous" media="print"
     onload="this.media='all'" />
   <link rel="stylesheet" href="https://cdn.plyr.io/3.6.8/plyr.css" media="print" onload="this.media='all'" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" media="print"
-    onload="this.media='all'" />
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" media="print"
+    onload="this.media='all'" /> -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css"
     integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous"
     media="print" onload="this.media='all'" />
@@ -115,15 +116,18 @@
 
   <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
   <script type="text/javascript">
+    $("img").each((i, el) => {
+      $(el).wrap(`<a href=${$(el).attr("src")} class="glightbox"></a>`)
+    });
     const lightbox = GLightbox({
       touchNavigation: true,
       loop: true,
       autoplayVideos: false
     });
-    $("img").each(function (i, el) {
-      // glightbox うまく動かんくて草
-      $(el).wrap(`<a href=${$(el).attr("src")} class="glightbox"></a>`)
-    });
+    const avatar = document.getElementsByClassName("site-avatar")[0]
+    const avatarImage = avatar.firstElementChild.firstElementChild
+    avatar.innerHTML = ""
+    avatar.appendChild(avatarImage);
   </script>
 
   <!-- フローチャート作れるやつらしい -->
