@@ -6,7 +6,7 @@ permalink: /:year/:title
 timezone: Asia/Tokyo
 future: true
 
-# google_analytics: "UA-213664706-1"
+google_analytics: "UA-213664706-1"
 # locale: ja_JP
 # lang: "ja"
 
