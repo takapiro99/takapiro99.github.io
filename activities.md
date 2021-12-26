@@ -10,15 +10,15 @@ title: 活動記録一覧
 ---
 
 <ul>
-{% for post in site.posts reversed %}
+{% for post in site.posts  %}
 
-  {% if post.previous %}
+  {% if post.next %}
   {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
-  {% capture pyear %}{{ post.previous.date | date: '%Y' }}{% endcapture %}
+  {% capture nyear %}{{ post.next.date | date: '%Y' }}{% endcapture %}
   {% endif %}
 
-  {% if post.previous %}
-    {% if year != pyear %}
+  {% if post.next %}
+    {% if year != nyear %}
       <!-- 新しい年だったとき -->
       </ul>
       <li><h3 id="{{ post.date | date: '%Y' }}">{{ post.date | date: '%Y' }} 年</h3></li>
@@ -29,8 +29,8 @@ title: 活動記録一覧
       <li>{{ post.date | date: "%m月" }} <a href="{{ post.url }}">{{ post.title }}</a></li>
     {% endif %}
   {% else %}
-    <!-- pyearが無いとき、つまり始めの年のとき -->
-    <li><h3>{{ post.date | date: '%Y' }} 年</h3></li>
+    <!-- nyearが無いとき、つまり始めの年のとき -->
+    <li><h3 id="{{ post.date | date: '%Y' }}">{{ post.date | date: '%Y' }} 年</h3></li>
     <ul>
       <li>{{ post.date | date: "%m月" }} <a href="{{ post.url }}">{{ post.title }}</a></li>
   {% endif %}
