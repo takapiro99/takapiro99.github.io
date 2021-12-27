@@ -4,6 +4,8 @@ title: LOCAL学生部総大会2020に参加してきた
 updated_at: 2021-12-27
 ---
 
+{% include from-hateblo.html %}
+
 <br>
 
 こんばんは、たかぴろです。
