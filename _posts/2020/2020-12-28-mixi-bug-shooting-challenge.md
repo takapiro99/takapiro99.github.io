@@ -1,9 +1,11 @@
 ---
 layout: post
-title: mixi Bug Shooting Challenge \#5 に参加した
+title: mixi Bug Shooting Challenge#5 に参加した
 updated_at: 2021-12-27
 categories: [イベント]
 ---
+
+{% include from-hateblo.html %}
 
 エンジニアの中には CRE（Customer Reliability Engineering）という職種があります。意味はそのまま「お客さんからの信頼を上げる」エンジニアで、主に問い合わせに対応したりデータ分析をするらしいです。
 
