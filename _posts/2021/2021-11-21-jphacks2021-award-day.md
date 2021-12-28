@@ -102,7 +102,7 @@ JPHacks の場合多くのスポンサー企業が審査に関わるので、そ
 
 タスク管理を issue でちゃんとできるようになったら理想かなと思いました。GitHub の issue もっと使いやすくなったらいいな。
 
-<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">Issueを立てるべきか論争になるの、理想的には気軽に立てるべきなのにGitHubの機能がいまひとつ（issueの一覧性が低い、整理できない）だから多くは管理しきれず限界を迎えるからなので、どちらかが正解ではなくてGitHubが悪い。<a href="https://t.co/PGreE3toxb">https://t.co/PGreE3toxb</a></p>&mdash; いもす (@imos) <a href="https://twitter.com/imos/status/1460784501097844741?ref_src=twsrc%5Etfw">November 17, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">Issueを立てるべきか論争になるの、理想的には気軽に立てるべきなのにGitHubの機能がいまひとつ（issueの一覧性が低い、整理できない）だから多くは管理しきれず限界を迎えるからなので、どちらかが正解ではなくてGitHubが悪い。<a href="https://t.co/PGreE3toxb">https://t.co/PGreE3toxb</a></p>&mdash; いもす (@imos) <a href="https://twitter.com/imos/status/1460784501097844741?ref_src=twsrc%5Etfw">November 17, 2021</a></blockquote>
 
 <br/>
 
@@ -134,5 +134,5 @@ JPHacks の場合多くのスポンサー企業が審査に関わるので、そ
 #### 追記
 
 - おれたちが賞を取れなかったので、COCOA おこです
-  - <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">コロナ接触確認アプリ「COCOA」、バージョンアップで起動不能に　iPhone版、Android版ともに<a href="https://t.co/AIPKfrN0kY">https://t.co/AIPKfrN0kY</a> <a href="https://t.co/qogArbylFR">pic.twitter.com/qogArbylFR</a></p>&mdash; ITmedia NEWS (@itmedia_news) <a href="https://twitter.com/itmedia_news/status/1463819770055520256?ref_src=twsrc%5Etfw">November 25, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  - <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">コロナ接触確認アプリ「COCOA」、バージョンアップで起動不能に　iPhone版、Android版ともに<a href="https://t.co/AIPKfrN0kY">https://t.co/AIPKfrN0kY</a> <a href="https://t.co/qogArbylFR">pic.twitter.com/qogArbylFR</a></p>&mdash; ITmedia NEWS (@itmedia_news) <a href="https://twitter.com/itmedia_news/status/1463819770055520256?ref_src=twsrc%5Etfw">November 25, 2021</a></blockquote>
 - 後輩がブログデビューしました！→ [https://usatyo.hatenablog.com/entry/2021/11/25/224957](https://usatyo.hatenablog.com/entry/2021/11/25/224957)

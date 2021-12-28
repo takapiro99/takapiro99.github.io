@@ -34,7 +34,7 @@ Internet of Things Lightening Talk の略で、今話題の技術(?)である Io
 
 その後仮面ライダーの返信は実は認証じゃねっていう話も出てきて、教育って単に学校で教えるだけじゃないよなーと思ったり。プリキュアはどうなん？って聞くの忘れてた。セキュリティおもちゃ触ってみたいな。あと tomio さん無事に帰れますように。
 
-<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">(新千歳特有の1時間45分遅れ)(ﾆﾎﾝｶﾞﾁｬ)(エーエヌエーの謝罪)(俺が振り替えた航空券)(ギチギチの荷物収納箱)(きのとやでソフトクリーム購入)(キリンガラナ)(ポッカのガラナ)(疲労でヘロヘロの大人)(鉄道の運行状況でガチ焦り)(祈り) (小さめのキャリーケース)(瞬足)(コーナーで差をつけろ) <a href="https://t.co/Ce5KPnOWNk">pic.twitter.com/Ce5KPnOWNk</a></p>&mdash; 旭川市から小平市の Co-KoNPILe に参加する自分と同じ仕事したい若い人を探しているとみお (@tomio2480) <a href="https://twitter.com/tomio2480/status/1170674505066221569?ref_src=twsrc%5Etfw">September 8, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">(新千歳特有の1時間45分遅れ)(ﾆﾎﾝｶﾞﾁｬ)(エーエヌエーの謝罪)(俺が振り替えた航空券)(ギチギチの荷物収納箱)(きのとやでソフトクリーム購入)(キリンガラナ)(ポッカのガラナ)(疲労でヘロヘロの大人)(鉄道の運行状況でガチ焦り)(祈り) (小さめのキャリーケース)(瞬足)(コーナーで差をつけろ) <a href="https://t.co/Ce5KPnOWNk">pic.twitter.com/Ce5KPnOWNk</a></p>&mdash; 旭川市から小平市の Co-KoNPILe に参加する自分と同じ仕事したい若い人を探しているとみお (@tomio2480) <a href="https://twitter.com/tomio2480/status/1170674505066221569?ref_src=twsrc%5Etfw">September 8, 2019</a></blockquote>
 
 ### 最後に
 

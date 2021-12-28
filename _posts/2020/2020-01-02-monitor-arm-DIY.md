@@ -66,7 +66,7 @@ VESA 規格は一般的にアーム側に穴の開いたマウンタがあり、
 
 若干傾いてる気がするけど無段階調節できるので問題ないです。
 
-<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">できた、モニターアーム化した <a href="https://t.co/WijBOeSMys">pic.twitter.com/WijBOeSMys</a></p>&mdash; たかぴろ (@takapiro_99) <a href="https://twitter.com/takapiro_99/status/1212591542235353088?ref_src=twsrc%5Etfw">January 2, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">できた、モニターアーム化した <a href="https://t.co/WijBOeSMys">pic.twitter.com/WijBOeSMys</a></p>&mdash; たかぴろ (@takapiro_99) <a href="https://twitter.com/takapiro_99/status/1212591542235353088?ref_src=twsrc%5Etfw">January 2, 2020</a></blockquote>
 
 ### まとめ
 

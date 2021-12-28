@@ -13,7 +13,7 @@ updated_at: 2021-12-27
 宿は小 5 の宿泊研修みたいなとこでわいわい楽しかった。
 Wi-Fi は繋がるけどインターネットには繋がらないねって話したり、洗面所空いてるか ping 疎通確認してくるわ(笑)って言ってパケットの気持ちになったり、徹夜で CTF やってる勢もいた。おれはちゃんと寝たかったから寝た。(徹夜勢体力やばば)
 
-<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">疲れた〜&amp;お疲れ様でした〜<br>物理キーボードスマホとか自宅ラックサーバーとか徹夜CTF勢とかですね、たくさん刺激になりました <a href="https://twitter.com/hashtag/seccamp?src=hash&amp;ref_src=twsrc%5Etfw">#seccamp</a></p>&mdash; たかぴろ (@takapiro_99) <a href="https://twitter.com/takapiro_99/status/1193429173152272384?ref_src=twsrc%5Etfw">November 10, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">疲れた〜&amp;お疲れ様でした〜<br>物理キーボードスマホとか自宅ラックサーバーとか徹夜CTF勢とかですね、たくさん刺激になりました <a href="https://twitter.com/hashtag/seccamp?src=hash&amp;ref_src=twsrc%5Etfw">#seccamp</a></p>&mdash; たかぴろ (@takapiro_99) <a href="https://twitter.com/takapiro_99/status/1193429173152272384?ref_src=twsrc%5Etfw">November 10, 2019</a></blockquote>
 
 会場は北大だったけど、北大生はおれともう一人しかいなかった。
 話は脱線するがその人は arch linux 使ってて、カッケーなって思ったからおれも入れてみることにした。この前ヤフオクで落とした ThinkPad に入れてみてるなうなんだけど最初の設定いろいろが難しいなあってなってる。

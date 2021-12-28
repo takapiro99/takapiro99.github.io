@@ -28,9 +28,9 @@ updated_at: 2021-12-27
 
 一日目は、榊くんに競プロを教わったり、e-sports をやったりしました。
 
-<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">榊に競プロ教わってる</p>&mdash; たかぴろ (@takapiro_99) <a href="https://twitter.com/takapiro_99/status/1218466020983111680?ref_src=twsrc%5Etfw">January 18, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">榊に競プロ教わってる</p>&mdash; たかぴろ (@takapiro_99) <a href="https://twitter.com/takapiro_99/status/1218466020983111680?ref_src=twsrc%5Etfw">January 18, 2020</a></blockquote>
 
-<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">榊とe-sportsした <a href="https://t.co/TKq42yc9Cf">pic.twitter.com/TKq42yc9Cf</a></p>&mdash; たかぴろ (@takapiro_99) <a href="https://twitter.com/takapiro_99/status/1218468921554006016?ref_src=twsrc%5Etfw">January 18, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">榊とe-sportsした <a href="https://t.co/TKq42yc9Cf">pic.twitter.com/TKq42yc9Cf</a></p>&mdash; たかぴろ (@takapiro_99) <a href="https://twitter.com/takapiro_99/status/1218468921554006016?ref_src=twsrc%5Etfw">January 18, 2020</a></blockquote>
 
 宿に移動してからは、たしかすぐ AtCoder の企業コンがはじまり、100-200-...という感じの点数だった気がするけど 100 しかできずにレート下がった。榊は時間いっぱいがんばっててすごいなって思った。緑以上くらいなりたいなーとぼんやり思うけど思ってるだけじゃなんも変わらんな(あたりまえ)
 
@@ -60,7 +60,7 @@ LED ぴかぴかーの実装をメインに取り組みました。具体的に�
 ### できたもの
 
 <br>
-<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">動画！<br>ついでに同時閲覧数と謎のチャット機能つけた、<a href="https://t.co/uRtiigZ1rA">https://t.co/uRtiigZ1rA</a>の勉強になりました <a href="https://t.co/yOud1bpGcR">pic.twitter.com/yOud1bpGcR</a></p>&mdash; たかぴろ (@takapiro_99) <a href="https://twitter.com/takapiro_99/status/1218924116331286528?ref_src=twsrc%5Etfw">January 19, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">動画！<br>ついでに同時閲覧数と謎のチャット機能つけた、<a href="https://t.co/uRtiigZ1rA">https://t.co/uRtiigZ1rA</a>の勉強になりました <a href="https://t.co/yOud1bpGcR">pic.twitter.com/yOud1bpGcR</a></p>&mdash; たかぴろ (@takapiro_99) <a href="https://twitter.com/takapiro_99/status/1218924116331286528?ref_src=twsrc%5Etfw">January 19, 2020</a></blockquote>
 <br>
 
 ### 感想

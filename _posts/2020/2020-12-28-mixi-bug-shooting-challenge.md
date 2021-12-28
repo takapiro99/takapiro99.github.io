@@ -19,7 +19,7 @@ categories: [イベント]
 
 はじめましての [@magcho](https://twitter.com/magcho) くんとペアでした。（お互い個人エントリー）
 
-<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">やっていき<a href="https://twitter.com/hashtag/mixi_BSC?src=hash&amp;ref_src=twsrc%5Etfw">#mixi_BSC</a></p>&mdash; magcho (@magcho0527) <a href="https://twitter.com/magcho0527/status/1340125908066177024?ref_src=twsrc%5Etfw">December 19, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">やっていき<a href="https://twitter.com/hashtag/mixi_BSC?src=hash&amp;ref_src=twsrc%5Etfw">#mixi_BSC</a></p>&mdash; magcho (@magcho0527) <a href="https://twitter.com/magcho0527/status/1340125908066177024?ref_src=twsrc%5Etfw">December 19, 2020</a></blockquote>
 
 #### レクチャー
 
