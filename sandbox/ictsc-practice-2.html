@@ -56,24 +56,31 @@
             document.getElementById("more").innerHTML += data.images
               .map((url) => `<img src="${url}" width="250px"/>`)
               .join("");
-          });
+          })
+          .catch(alert);
       }
     };
 
     const addFav = () => {
       const server = document.getElementById("ip").value;
       const favCount = document.getElementById("favCount");
-      fetch(`http://${server}:5000/fav`, {
-        method: "PUT",
-        body: JSON.stringify({ favCount: 1 }),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
-          if (data.status === "OK") {
-            favCount.innerText = parseInt(favCount.innerText) + 1;
-          }
-        });
+      if (ValidateIPaddress(server)) {
+        fetch(`http://${server}:5000/fav`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ favCount: 1 }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+            if (data.status === "OK") {
+              favCount.innerText = parseInt(favCount.innerText) + 1;
+            }
+          })
+          .catch(alert);
+      }
     };
   </script>
 </html>
