@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body style="background: lightpink; text-align: center">
+    <label for="ip">
+      ここに自分のサーバーの IP アドレスを入力してね
+      <input id="ip" type="text" />
+    </label>
+    <h2>写真ギャラリー</h2>
+    <p><button onclick="addFav()">いいね！</button></p>
+    <p><span id="favCount">0</span>&nbsp;回いいねしました。</p>
+    <p>
+      <img
+        src="https://blogger.googleusercontent.com/img/a/AVvXsEiTjjaWkCHeCslxeKujaQotjuR_HvhOHen7Ql7rQV8nmQl4ivLRF_CSabMY-JLJHNL-xHMe3VDyA9F-iv1RtQ2jFTk1Vnjck-veKLUZPdYqCcjzHkc8SGKb1fyZ_x8W66aTrSXQ78UN3CnyBakwwmmH_hmPKeEsTzq8J3e2zzUMylmDjCZ0LClPByBRRw=s689"
+        width="250px"
+        alt=""
+      />
+      <img
+        src="https://1.bp.blogspot.com/-2icHJ4zioLs/YHDkG_fwSII/AAAAAAABdkg/x6TzbjTM8U874CDTB1JpMKid3XU_kN94wCNcBGAsYHQ/s849/cat_kotatsu_neko.png"
+        width="250px"
+        alt=""
+      />
+    </p>
+    <p id="more"></p>
+    <div>
+      <button onclick="seeMore()" style="padding: 20px; border-radius: 10px">
+        もっと見る
+      </button>
+    </div>
+  </body>
+  <script>
+    function ValidateIPaddress(ipaddress) {
+      if (
+        /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(
+          ipaddress
+        )
+      ) {
+        return true;
+      }
+      alert("You have entered an invalid IP address!");
+      return false;
+    }
+
+    const seeMore = () => {
+      const server = document.getElementById("ip").value;
+      if (ValidateIPaddress(server)) {
+        fetch(`http://${server}:5000/`)
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+            document.getElementById("more").innerHTML += data.images
+              .map((url) => `<img src="${url}" width="250px"/>`)
+              .join("");
+          });
+      }
+    };
+
+    const addFav = () => {
+      const server = document.getElementById("ip").value;
+      const favCount = document.getElementById("favCount");
+      fetch(`http://${server}:5000/fav`, {
+        method: "PUT",
+        body: JSON.stringify({ favCount: 1 }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          if (data.status === "OK") {
+            favCount.innerText = parseInt(favCount.innerText) + 1;
+          }
+        });
+    };
+  </script>
+</html>
