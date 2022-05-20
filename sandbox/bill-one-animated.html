@@ -19,7 +19,6 @@
     <style>
       * {
         text-align: center;
-        color: #201715;
       }
 
       span {
@@ -27,11 +26,12 @@
       }
 
       .container {
-        margin: 60px auto;
+        margin: 40px auto;
         font-size: calc(33px * 2);
         transform: scale(1, 1.05);
         position: relative;
         user-select: none;
+        color: #201715;
       }
 
       .b,
@@ -54,7 +54,7 @@
       }
 
       .circle {
-        transition: 0.35s stroke-dashoffset;
+        transition: 0.35s;
         transform-origin: 50% 50%;
         transform: rotate(-90deg);
       }
@@ -77,7 +77,7 @@
         transform: translateX(calc(-50% + 45px));
       }
 
-      .animate {
+      .start {
         border: none;
         border-radius: 9px;
         padding: 15px 25px;
@@ -86,13 +86,47 @@
         letter-spacing: 0.15rem;
       }
 
-      .animate:active {
-        box-shadow: none;
+      .panel {
+        margin-top: 90px;
+      }
+
+      #tagline {
+        margin: 120px auto 20px;
+        font-size: 22px;
+        font-weight: bold;
+        color: #006aac;
+        /* opacity: 0; */
+      }
+
+      #tagline span {
+        transform: translate(-5px, 0) scale(0);
+      }
+
+      .animate span {
+        animation: leftRight 1s forwards;
+      }
+
+      @keyframes leftRight {
+        40% {
+          transform: translate(5px, 0) scale(0.7);
+          opacity: 1;
+          color: #a7d7ff;
+        }
+        60% {
+          transform: translate(0) scale(1.15);
+          opacity: 0.4;
+        }
+        100% {
+          transform: translate(0) scale(1);
+          opacity: 1;
+          color: #006aac;
+        }
       }
     </style>
   </head>
   <body>
     <div class="container">
+      <p id="tagline" class="">請求書受領から、月次決算を加速する</p>
       <div style="line-height: 66px">
         <span class="b">B</span>
         <span class="ill">ill</span>
@@ -100,6 +134,16 @@
           <svg width="55" height="66.5">
             <circle
               class="circle"
+              stroke="#CCC"
+              stroke-width="10"
+              fill="transparent"
+              r="21"
+              cx="20"
+              cy="33"
+            />
+            <circle
+              class="circle"
+              id="circle"
               stroke="#006AAC"
               stroke-width="10"
               fill="transparent"
@@ -116,7 +160,7 @@
     </div>
 
     <div class="panel">
-      <button class="animate" onclick="startAnimation()">start</button>
+      <button class="start" onclick="startAnimation()">start</button>
     </div>
 
     <div
@@ -156,7 +200,19 @@
       const _id = (id) => document.getElementById(id);
       const _qs = (q) => document.querySelector(q);
 
-      const circle = _qs("circle");
+      const tagline = _id("tagline");
+      const taglineAnimationTimeSecond = 1.1;
+      tagline.innerHTML = tagline.textContent
+        .split("")
+        .map(
+          (letter, i, arr) =>
+            `<span style="animation-delay: ${
+              (taglineAnimationTimeSecond / arr.length) * i
+            }s;">${letter}</span>`
+        )
+        .join("");
+
+      const circle = _id("circle");
       const radius = circle.r.baseVal.value;
       const circumference = radius * 2 * Math.PI;
 
@@ -180,20 +236,22 @@
       const sleep = (ms) => new Promise((res) => setTimeout(res, ms));
 
       const startAnimation = async () => {
-        _qs(".animate").disabled = true;
-        _qs(".animate").style.cursor = "default";
-        _qs(".circle").style.transition = "none";
+        _qs(".start").disabled = true;
+        _qs(".start").style.cursor = "default";
+        _id("circle").style.transition = "none";
         setProgress(0);
+        tagline.classList.remove("animate");
+        await sleep(200);
+        tagline.classList.add("animate");
         animatedCount++;
         count = 0;
-        await sleep(100);
-        _qs(".circle").style.transition =
-          "transition: 0.35s stroke-dashoffset;";
+        await sleep(700);
+        // _qs(".circle").style.transition = "0.05s";
         interval = setInterval(() => {
           if (count++ == 30) {
             clearInterval(interval);
-            _qs(".animate").disabled = false;
-            _qs(".animate").style.cursor = "pointer";
+            _qs(".start").disabled = false;
+            _qs(".start").style.cursor = "pointer";
             if (animatedCount >= 3) {
               _id("link").style.opacity = 1;
               _id("link").style.pointerEvents = "auto";
@@ -201,7 +259,7 @@
             }
           }
           setProgress(Math.round(easeInOutCubic(count / 30) * 100));
-        }, 45);
+        }, 35);
       };
     </script>
   </body>
