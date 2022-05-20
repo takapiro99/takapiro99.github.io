@@ -245,8 +245,7 @@
         tagline.classList.add("animate");
         animatedCount++;
         count = 0;
-        await sleep(700);
-        // _qs(".circle").style.transition = "0.05s";
+        await sleep(1800);
         interval = setInterval(() => {
           if (count++ == 30) {
             clearInterval(interval);
@@ -259,7 +258,7 @@
             }
           }
           setProgress(Math.round(easeInOutCubic(count / 30) * 100));
-        }, 35);
+        }, 42);
       };
     </script>
   </body>
