@@ -209,17 +209,12 @@
         pointerX = pointerY = null;
       };
 
-      // イベント名
-      const supportTouch = "ontouchend" in document;
-      const TOUCHSTART = supportTouch ? "touchstart" : "mousedown";
-      const TOUCHMOVE = supportTouch ? "touchmove" : "mousemove";
-      const TOUCHEND = supportTouch ? "touchend" : "mouseup";
-
       function initialize() {
         window.addEventListener("resize", resizeCanvas, false);
-        canvas.addEventListener(TOUCHSTART, onPointerDown, false);
-        canvas.addEventListener(TOUCHMOVE, onPointerMove, false);
-        canvas.addEventListener(TOUCHEND, onPointerUp, false);
+        canvas.addEventListener("pointerdown", onPointerDown, false);
+        canvas.addEventListener("pointermove", onPointerMove, false);
+        canvas.addEventListener("touchmove", onPointerMove, false);
+        canvas.addEventListener("pointerup", onPointerUp, false);
         resizeCanvas();
       }
       initialize();
