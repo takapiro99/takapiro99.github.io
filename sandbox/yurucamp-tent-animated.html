@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        margin: 0px;
+        border: 0;
+        overflow: hidden;
+        display: block;
+        position: relative;
+      }
+      #canvas {
+        background-color: rgb(67, 202, 214);
+      }
+      .text {
+        z-index: 10000;
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+        margin: 0 auto;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <canvas id="canvas"></canvas>
+      <div class="text">ゆるキャン△</div>
+    </div>
+    <script>
+      const canvas = document.getElementById("canvas");
+      const ctx = canvas.getContext("2d");
+      const initialTentHeight = 1 / 4 / 1.2;
+      const initialTentWidth = 1 / 4;
+      const initialTentHalfWidth = initialTentWidth / 2;
+      const initialTentX = 1 / 2;
+      const initialTentY = 2 / 5;
+      let tentHeight = initialTentHeight;
+      let tentWidth = initialTentWidth;
+      let tentTopX = initialTentX;
+      let tentTopY = initialTentY;
+
+      let pointerX = null;
+      let pointerY = null;
+
+      function redraw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        const h = window.innerHeight;
+        const w = window.innerWidth;
+        const bw = h * initialTentHalfWidth;
+        const bottom = h * (initialTentY + tentHeight);
+        const bl = w * initialTentX - bw;
+        const br = w * initialTentX + bw;
+        if (!pointerX && !pointerY) {
+          tentTopX = initialTentX;
+          tentTopY = initialTentY;
+        } else {
+          const absX = Math.sqrt(Math.abs(w * initialTentX - pointerX) * 30);
+          tentTopX =
+            w * initialTentX < pointerX
+              ? (w * initialTentX + absX) / w
+              : (w * initialTentX - absX) / w;
+          const absY = Math.sqrt(Math.abs(h * initialTentY - pointerY) * 5);
+          tentTopY =
+            h * initialTentY < pointerY
+              ? (h * initialTentY + absY) / h
+              : (h * initialTentY - absY) / h;
+        }
+        ctx.lineJoin = "round";
+        ctx.lineCap = "round";
+        ctx.strokeStyle = "#222";
+        ctx.fillStyle = "rgb(245, 238, 175)";
+        ctx.lineWidth = "7";
+        // テント本体
+        ctx.beginPath();
+        ctx.moveTo(w * tentTopX, h * tentTopY);
+        ctx.lineTo(w * initialTentX + bw, bottom);
+        ctx.lineTo(w * initialTentX - bw, bottom);
+        ctx.lineTo(w * tentTopX, h * tentTopY);
+        ctx.stroke();
+        ctx.fill();
+        // 入り口
+        ctx.beginPath();
+        ctx.moveTo(
+          w * (initialTentX + (tentTopX - initialTentX) / 3.5),
+          bottom - (bottom - tentTopY * h) / 3.5
+        );
+        ctx.lineTo(w * initialTentX + bw / 3, bottom);
+        ctx.lineTo(w * initialTentX - bw / 3, bottom);
+        ctx.fillStyle = "#222";
+        ctx.fill();
+        // うえのほう
+        ctx.beginPath();
+        ctx.moveTo(w * tentTopX, h * tentTopY);
+        ctx.lineTo(
+          bl + (w * tentTopX - bl) * 0.4,
+          h * tentTopY + (bottom - h * tentTopY) * 0.6
+        );
+        const bl2 = bl + (w * initialTentHalfWidth) / 3;
+        ctx.lineTo(
+          bl2 + (w * tentTopX - bl2) * 0.3,
+          h * tentTopY + (bottom - h * tentTopY) * 0.7
+        );
+        const bl3 = bl + (w * initialTentHalfWidth) / 1.8;
+        ctx.lineTo(
+          bl3 + (w * tentTopX - bl3) * 0.42,
+          h * tentTopY + (bottom - h * tentTopY) * 0.58
+        );
+        // center
+        ctx.lineTo(
+          w * (initialTentX + (tentTopX - initialTentX) / 3.5),
+          bottom - (bottom - tentTopY * h) / 3.5
+        );
+        const br3 = br - (w * initialTentHalfWidth) / 1.8;
+        ctx.lineTo(
+          br3 + (w * tentTopX - br3) * 0.42,
+          h * tentTopY + (bottom - h * tentTopY) * 0.58
+        );
+        const br2 = br - (w * initialTentHalfWidth) / 3;
+        ctx.lineTo(
+          br2 + (w * tentTopX - br2) * 0.3,
+          h * tentTopY + (bottom - h * tentTopY) * 0.7
+        );
+        ctx.lineTo(
+          br + (w * tentTopX - br) * 0.4,
+          h * tentTopY + (bottom - h * tentTopY) * 0.6
+        );
+        ctx.fillStyle = "orange";
+        ctx.fill();
+        // 右側の影
+        ctx.beginPath();
+        ctx.moveTo(w * tentTopX, h * tentTopY);
+        ctx.lineTo(w * initialTentX + bw, bottom);
+        ctx.lineTo(w * initialTentX + bw / 1.5, bottom);
+        ctx.lineTo(w * tentTopX, h * tentTopY);
+        ctx.fillStyle = "#22222216";
+        ctx.fill();
+        // 左の光
+        ctx.beginPath();
+        ctx.moveTo(w * tentTopX, h * tentTopY);
+        ctx.lineTo(w * initialTentX - bw, bottom);
+        ctx.lineTo(w * initialTentX - bw / 1.5, bottom);
+        ctx.lineTo(w * tentTopX, h * tentTopY);
+        ctx.fillStyle = "#EEEEEE99";
+        ctx.fill();
+        // 茶色
+        ctx.beginPath();
+        ctx.moveTo(
+          w * (initialTentX + (tentTopX - initialTentX) / 3.5),
+          bottom - (bottom - tentTopY * h) / 3.5
+        );
+        const bl4 = w * initialTentX - bw / 2.7;
+        ctx.lineTo(
+          bl4 + (w * tentTopX - bl4) * 0.1,
+          // bottom
+          (bottom + bottom - (bottom - tentTopY * h) / 3.5) / 2
+        );
+        ctx.lineTo(w * initialTentX - bw / 3, bottom);
+        ctx.lineTo(w * initialTentX + bw / 3, bottom);
+        const br4 = w * initialTentX + bw / 2.7;
+        ctx.lineTo(
+          br4 + (w * tentTopX - br4) * 0.1,
+          // bottom
+          (bottom + bottom - (bottom - tentTopY * h) / 3.5) / 2
+        );
+        ctx.fillStyle = "saddlebrown";
+        ctx.fill();
+        // 入り口 黒
+        ctx.beginPath();
+        ctx.moveTo(
+          w * (initialTentX + (tentTopX - initialTentX) / 3.5),
+          bottom - (bottom - tentTopY * h) / 3.5
+        );
+        ctx.lineTo(w * initialTentX + bw / 3, bottom);
+        ctx.lineTo(w * initialTentX - bw / 3, bottom);
+        ctx.fillStyle = "#222";
+        ctx.fill();
+      }
+
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        redraw();
+      }
+
+      const onPointerDown = (e) => {
+        pointerX = e.offsetX;
+        pointerY = e.offsetY;
+      };
+
+      const onPointerMove = (e) => {
+        if (pointerX && pointerY) {
+          pointerX = e.offsetX;
+          pointerY = e.offsetY;
+          // console.log(pointerX, pointerY);
+        }
+        redraw();
+      };
+
+      const onPointerUp = (e) => {
+        pointerX = pointerY = null;
+      };
+
+      function initialize() {
+        window.addEventListener("resize", resizeCanvas, false);
+        canvas.addEventListener("pointerdown", onPointerDown, false);
+        canvas.addEventListener("pointermove", onPointerMove, false);
+        canvas.addEventListener("pointerup", onPointerUp, false);
+        resizeCanvas();
+      }
+      initialize();
+    </script>
+  </body>
+</html>
