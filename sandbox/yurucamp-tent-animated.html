@@ -217,9 +217,9 @@
 
       function initialize() {
         window.addEventListener("resize", resizeCanvas, false);
-        canvas.addEventListener("TOUCHSTART", onPointerDown, false);
-        canvas.addEventListener("TOUCHMOVE", onPointerMove, false);
-        canvas.addEventListener("TOUCHEND", onPointerUp, false);
+        canvas.addEventListener(TOUCHSTART, onPointerDown, false);
+        canvas.addEventListener(TOUCHMOVE, onPointerMove, false);
+        canvas.addEventListener(TOUCHEND, onPointerUp, false);
         resizeCanvas();
       }
       initialize();
