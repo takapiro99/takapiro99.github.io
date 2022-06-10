@@ -36,6 +36,7 @@
       <div class="text">ゆるキャン△</div>
     </div>
     <script>
+      const touchSupported = "ontouchend" in document;
       const canvas = document.getElementById("canvas");
       const ctx = canvas.getContext("2d");
       const initialTentHeight = 1 / 4 / 1.2;
@@ -197,10 +198,11 @@
       };
 
       const onPointerMove = (e) => {
-        if (pointerX && pointerY) {
-          pointerX = e.offsetX;
-          pointerY = e.offsetY;
-          // console.log(pointerX, pointerY);
+        pointerX = e.offsetX;
+        pointerY = e.offsetY;
+        if (touchSupported) {
+          pointerX = e?.changedTouches[0]?.offsetX;
+          pointerY = e?.changedTouches[0]?.offsetY;
         }
         redraw();
       };
