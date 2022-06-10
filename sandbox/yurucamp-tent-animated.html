@@ -4,7 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>ゆるキャン△</title>
+    <link
+      rel="shortcut icon"
+      href="./favicon/yurucamp/favicon.ico"
+      type="image/x-icon"
+    />
     <style>
       html,
       body {
@@ -19,7 +24,7 @@
       #canvas {
         background-color: rgb(67, 202, 214);
       }
-      .text {
+      #text {
         z-index: 10000;
         position: absolute;
         width: 100%;
@@ -28,15 +33,25 @@
         margin: 0 auto;
         text-align: center;
       }
+      #status {
+        z-index: 10000;
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        margin: 0 auto;
+        text-align: center;
+        color: #ddd;
+      }
     </style>
   </head>
   <body>
     <div class="container">
       <canvas id="canvas"></canvas>
-      <div class="text">ゆるキャン△</div>
+      <div id="text">ゆるキャン△</div>
+      <div id="status"></div>
     </div>
     <script>
-      const touchSupported = "ontouchend" in document;
       const canvas = document.getElementById("canvas");
       const ctx = canvas.getContext("2d");
       const initialTentHeight = 1 / 4 / 1.2;
@@ -51,6 +66,11 @@
 
       let pointerX = null;
       let pointerY = null;
+
+      const _log = (s) => {
+        console.log(s);
+        document.getElementById("status").innerText = s;
+      };
 
       function redraw() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -193,30 +213,46 @@
       }
 
       const onPointerDown = (e) => {
-        pointerX = e.offsetX;
-        pointerY = e.offsetY;
+        _log(e.type);
+        if (e.type === "mousedown") {
+          pointerX = e.offsetX;
+          pointerY = e.offsetY;
+        } else {
+          pointerX = e.touches[0].clientX;
+          pointerY = e.touches[0].clientY;
+        }
       };
 
       const onPointerMove = (e) => {
-        pointerX = e.offsetX;
-        pointerY = e.offsetY;
-        if (touchSupported) {
-          pointerX = e?.changedTouches[0]?.offsetX;
-          pointerY = e?.changedTouches[0]?.offsetY;
+        _log(e.type);
+        if (pointerX && pointerY) {
+          if (e.type === "mousemove") {
+            pointerX = e.offsetX;
+            pointerY = e.offsetY;
+          } else {
+            pointerX = e.touches[0].clientX;
+            pointerY = e.touches[0].clientY;
+          }
+          redraw();
         }
-        redraw();
       };
 
       const onPointerUp = (e) => {
+        _log(e.type);
         pointerX = pointerY = null;
+        redraw();
       };
 
       function initialize() {
         window.addEventListener("resize", resizeCanvas, false);
-        canvas.addEventListener("pointerdown", onPointerDown, false);
-        canvas.addEventListener("pointermove", onPointerMove, false);
+        // mouse
+        canvas.addEventListener("mousedown", onPointerDown, false);
+        canvas.addEventListener("mousemove", onPointerMove, false);
+        canvas.addEventListener("mouseup", onPointerUp, false);
+        // touch device
+        canvas.addEventListener("touchstart", onPointerDown, false);
         canvas.addEventListener("touchmove", onPointerMove, false);
-        canvas.addEventListener("pointerup", onPointerUp, false);
+        canvas.addEventListener("touchend", onPointerUp, false);
         resizeCanvas();
       }
       initialize();
