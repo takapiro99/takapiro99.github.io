@@ -11,7 +11,7 @@
       .window,
       .window2 {
         position: fixed;
-        top: 50%;
+        top: 55%;
         left: 50%;
         transform: translate(-50%, -50%);
       }
@@ -61,21 +61,34 @@
       }
       @keyframes move {
         0% {
-          top: 49.5%;
+          top: 54.5%;
           left: 49.5%;
         }
         50% {
-          top: 50.5%;
+          top: 55.5%;
           left: 50.5%;
         }
         100% {
-          top: 49.5%;
+          top: 54.5%;
           left: 49.5%;
         }
+      }
+      .header {
+        position: fixed;
+        width: 90%;
+        top: 3.5%;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        color: #eee;
+        z-index: 999999;
+        letter-spacing: 2.5px;
+        text-shadow: pink 0 0 18px;
       }
     </style>
   </head>
   <body>
+    <h2 class="header">Googleの新しいスマホが出てきそうな感じ</h2>
     <div class="back"></div>
     <div class="box"></div>
     <div class="window"></div>
