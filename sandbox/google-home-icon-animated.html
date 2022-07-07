@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Google TV にインスパイアされた</title>
+    <style>
+      .back,
+      .box,
+      .window,
+      .window2 {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .back {
+        height: 200%;
+        width: 200%;
+        filter: blur(50px);
+        animation: round infinite 9s linear;
+        transition: ease;
+        background: conic-gradient(
+          from 0.985turn,
+          #34a853 0.13turn,
+          #4285f4 0.13turn 0.48turn,
+          #ea4335 0.48turn 0.63turn,
+          #fbbc05 0.63turn 0.98turn,
+          #34a853 0.96turn
+        );
+      }
+      .box {
+        height: 50vh;
+        border-radius: 15px;
+        background: rgba(0, 0, 0, 0.8);
+        aspect-ratio: 9 / 18;
+      }
+      .window {
+        aspect-ratio: 9 / 14;
+        height: 100vh;
+        border: 2000px solid #111;
+        box-sizing: content-box;
+        box-shadow: inset 0 0 100px 150px #111;
+        animation: move infinite ease 10s;
+      }
+      .window2 {
+        animation: move infinite ease 10s;
+        aspect-ratio: 9 / 14;
+        height: 99.5vh;
+        border: 2000px solid #111;
+        box-sizing: content-box;
+      }
+      @keyframes round {
+        from {
+          transform: translate(-50%, -50%) rotate(0deg);
+        }
+        to {
+          transform: translate(-50%, -50%) rotate(360deg);
+        }
+      }
+      @keyframes move {
+        0% {
+          top: 49.5%;
+          left: 49.5%;
+        }
+        50% {
+          top: 50.5%;
+          left: 50.5%;
+        }
+        100% {
+          top: 49.5%;
+          left: 49.5%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="back"></div>
+    <div class="box"></div>
+    <div class="window"></div>
+    <div class="window2"></div>
+  </body>
+</html>
