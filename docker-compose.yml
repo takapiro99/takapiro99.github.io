@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command: jekyll serve --no-watch --trace --force_polling
+    command: jekyll serve --force_polling
     volumes:
       - ./:/srv/jekyll
     ports:
