@@ -1,12 +1,12 @@
 ---
 layout: post
-title: サッポロ冬割を極めた大学生が独断と偏見で選ぶ札幌のホテルランキング
+title: サッポロ割を極めた大学生が独断と偏見で選ぶ札幌のホテルランキング
 # author: takapiro_99
 # image: /huit_logo_white.png
 # updated_at: 2021-10-04
 ---
 
-冬割で 11 月末から 1 月までに 30 泊 over した大学生が札幌市内のホテルをレビュー
+サッポロ(冬)割で 11 月末から 1 月までに 30 泊 over した大学生が札幌市内のホテルをレビュー
 
 <br/>
 
@@ -16,7 +16,7 @@ title: サッポロ冬割を極めた大学生が独断と偏見で選ぶ札幌�
 
 <!-- https://sapporo-winter2020.com/ -->
 
-https://sapporowari.com/
+[https://sapporowari.com/](https://sapporowari.com/)
 
 前に書いた記事もぜひご覧ください →[冬割クーポン、どうしてもほしい！](2021/rurubu-fuyuwari-coupon)
 
