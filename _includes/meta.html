@@ -1,37 +1,43 @@
 <meta charset="utf-8" />
-<meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
-<meta http-equiv='X-UA-Compatible' content='IE=edge'>
-<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+/>
 
 {% if page.excerpt %}
 <meta name="description" content="{{ page.excerpt| strip_html }}" />
 <meta property="og:description" content="{{ page.excerpt| strip_html }}" />
 {% else %}
-<meta name="description" content="{{ site.description }}">
+<meta name="description" content="{{ site.description }}" />
 <meta property="og:description" content="{{ site.description }}" />
 {% endif %}
 <meta name="author" content="{{ site.name }}" />
 
-<meta name="twitter:card" content="summary" />
-
 {% if page.title %}
 <meta property="og:title" content="{{ page.title }}" />
-<meta property="twitter:title" content="{{ page.title }}" />
 {% endif %}
 
+<meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@takapiro_99" />
 <meta name="twitter:creator" content="@takapiro_99" />
-
+<meta property="og:url" content="{{ site.url }}" />
 <meta property="og:image" content="{{ site.avatar }}" />
 
 <!-- custom below -->
 
-<meta name="google-site-verification" content="LE7q9usOnV5Qs54JryYqSUeF6CZ7PdPaWB68IvT6RpU" />
+<meta
+  name="google-site-verification"
+  content="LE7q9usOnV5Qs54JryYqSUeF6CZ7PdPaWB68IvT6RpU"
+/>
 
 <!-- import jquery for dynamic link -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"
+></script>
 
-{%- if jekyll.environment == 'production' and site.google_analytics -%}
-{%- include google-analytics.html -%}
-{%- endif -%}
+{%- if jekyll.environment == 'production' and site.google_analytics -%} {%-
+include google-analytics.html -%} {%- endif -%}
