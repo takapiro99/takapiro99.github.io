@@ -41,3 +41,9 @@ layout: default
 ---
 
 #### [sandbox page](/sandbox)
+
+#### Other Links
+
+- [制作物まとめ Gist](https://gist.github.com/takapiro99/5598b0f5c730e47d4b58c64c12011297)
+- [Wantedly](https://www.wantedly.com/id/takapiro99)
+- [linkedIn](https://www.linkedin.com/in/takapiro99/)
