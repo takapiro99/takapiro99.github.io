@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // document.title = "222";
+      const aa =
+        "ｼｮﾎﾞｰﾝ━━（´･ω･`）━━（ 　´･ω･）━━（ 　´･ω）━━（ 　）━━（ω･´　）━━（･ω･´）━━（｀･ω･´）ｼｬｷｰﾝ━━━!!       ";
+
+      let counter = 0;
+      setInterval(() => {
+        if (counter === aa.length - 1) counter = 0;
+        const newTitle = aa.slice(counter, aa.length) + aa.slice(0, counter);
+        document.title = newTitle;
+        counter++;
+      }, 300);
+    </script>
+  </body>
+</html>
