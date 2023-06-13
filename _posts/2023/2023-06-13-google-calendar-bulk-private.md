@@ -4,7 +4,7 @@ title: Google Calendar の特定日付以前の公開範囲を一括で非公開
 # author: takapiro_99
 # image: /huit_logo_white.png
 # updated_at: 2021-10-04
-published: false
+published: true
 ---
 
 ```js
