@@ -32,7 +32,7 @@ step1. 北海道の市町村の形の画像（SVG など）を用意する
 - [https://github.com/niiyz/JapanCityGeoJson](https://github.com/niiyz/JapanCityGeoJson)
 - [https://github.com/softwaretechnik-berlin/geojson-renderer](https://github.com/softwaretechnik-berlin/geojson-renderer)
 
-<figure class="figure-image figure-image-fotolife" title="用意したSVGたち" style="width:15em">
+<figure class="figure-image figure-image-fotolife" title="用意したSVGたち">
 <img src="/assets/2023/hokkaido_svgs.png" />
 <figcaption>用意したSVGたち</figcaption></figure>
 
@@ -59,7 +59,7 @@ step4. 調整する
 
 [https://hokkaidle.web.app/](https://hokkaidle.web.app/)
 
-<figure class="figure-image figure-image-fotolife" title="完成！" style="width:15em">
+<figure class="figure-image figure-image-fotolife" title="完成！">
 <img src="/assets/2023/hokkaidle_image.png" />
 <figcaption>完成！</figcaption></figure>
 
