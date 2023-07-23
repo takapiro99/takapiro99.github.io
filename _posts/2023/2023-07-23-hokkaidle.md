@@ -5,7 +5,7 @@ title: Hokkaidle を作った
 published: true
 ---
 
-一昔前に流行った [Wordle](https://www.nytimes.com/games/wordle/index.html)、そしてそれのパロディの [Worldle](https://worldle.teuteuf.fr/)、そしてそれのパロディとして Hokkaidle を作りました。
+一昔前に流行った [Wordle](https://www.nytimes.com/games/wordle/index.html)、そしてそれのパロディの [Worldle](https://worldle.teuteuf.fr/)、そしてそれのパロディとして [Hokkaidle](https://hokkaidle.web.app/) を作りました。
 
 [https://hokkaidle.web.app/](https://hokkaidle.web.app/)
 
