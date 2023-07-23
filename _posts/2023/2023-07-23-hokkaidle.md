@@ -59,6 +59,10 @@ step4. 調整する
 
 [https://hokkaidle.web.app/](https://hokkaidle.web.app/)
 
+<figure class="figure-image figure-image-fotolife" title="完成！" style="width:15em">
+<img src="/assets/2023/hokkaidle_image.png" />
+<figcaption>完成！</figcaption></figure>
+
 ぜひ遊んでみてください。
 
 レポジトリはこちら。[https://github.com/takapiro99/hokkaidle](https://github.com/takapiro99/hokkaidle)
