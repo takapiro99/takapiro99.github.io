@@ -24,7 +24,7 @@ Worldle は MIT ライセンスで公開されている OSS だったので、�
 
 で進めました。
 
-1. 北海道の市町村の形の画像（SVG など）を用意する
+step1. 北海道の市町村の形の画像（SVG など）を用意する
 
 国土交通省が公開している「行政区域データ」で、データセットをダウンロードできました。元が GML 形式のファイルだったので、加工して SVG にしました。加工や情報収集に、以下のサイトを使わせていただきました。
 
@@ -32,18 +32,22 @@ Worldle は MIT ライセンスで公開されている OSS だったので、�
 - [https://github.com/niiyz/JapanCityGeoJson](https://github.com/niiyz/JapanCityGeoJson)
 - [https://github.com/softwaretechnik-berlin/geojson-renderer](https://github.com/softwaretechnik-berlin/geojson-renderer)
 
-2. 北海道の市町村の役場の緯度経度のデータを用意する
+<figure class="figure-image figure-image-fotolife" title="用意したSVGたち" style="width:15em">
+<img src="/assets/2023/hokkaido_svgs.png" />
+<figcaption>用意したSVGたち</figcaption></figure>
+
+step2. 北海道の市町村の役場の緯度経度のデータを用意する
 
 以下のサイトなどなどから集めました。団体コードというコードが１で作成したデータにもあって、それで突き合わせを行うことができました。
 
 - [https://ton2net.com/yakuba_address/](https://ton2net.com/yakuba_address/)
 - [https://www.j-lis.go.jp/spd/code-address/hokkaido/cms_12214179.html](https://www.j-lis.go.jp/spd/code-address/hokkaido/cms_12214179.html)
 
-3. それを元の Worldle の国のデータと入れ替える
+step3. それを元の Worldle の国のデータと入れ替える
 
 置き換えるだけでした。
 
-4. 調整する
+step4. 調整する
 
 タイトルなど、細かい箇所を直しました。
 
