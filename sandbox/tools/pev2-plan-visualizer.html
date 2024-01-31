@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pev2 example usage</title>
+  <script src="https://unpkg.com/vue@3.2.37/dist/vue.global.prod.js"></script>
+  <script src="https://unpkg.com/pev2@1.8.0/dist/pev2.umd.js"></script>
+  <link href="https://unpkg.com/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/pev2/dist/style.css" />
+  <style>
+    html,
+    body,
+    #app,
+    .plan-container {
+      height: 100%;
+    }
+
+    header {
+      height: 100px;
+      background-color: silver;
+      display: flex;
+      gap: 30px;
+      align-items: center;
+      padding: 0 30px;
+    }
+
+    .enter-plan-message {
+      margin-top: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 30px;
+    }
+  </style>
+  <script>
+  </script>
+  <!-- 
+    pev2：https://github.com/dalibo/pev2
+  -->
+</head>
+
+<body>
+  <div id="app">
+    <header>
+      <h2>
+        query plan visualizer
+      </h2>
+      <div>
+        <textarea name="plan" id="plan" cols="30" rows="3" placeholder="Plan(required)" class="form-control"
+          v-model="plan"></textarea>
+      </div>
+      <div>
+        <textarea name="query" id="query" cols="30" rows="3" placeholder="Query(optional)" class="form-control"
+          v-model="query"></textarea>
+      </div>
+    </header>
+    <div v-if="!plan" class="enter-plan-message">
+      enter plan
+    </div>
+    <pev2 v-if="plan" :plan-source="plan" :plan-query="query" :key="[plan, query]" />
+  </div>
+
+  <script>
+    const { createApp } = Vue;
+
+    const app = createApp({
+      data() {
+        return {
+          plan: "",
+          query: "",
+        };
+      },
+    });
+
+    app.component("pev2", pev2.Plan);
+    app.mount("#app");
+  </script>
+</body>
+
+
+</html>
