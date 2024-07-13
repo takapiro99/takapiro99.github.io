@@ -13,23 +13,29 @@
 </head>
 
 <body>
-  <!-- 2 sliders -->
-  <div class="root" style="display: flex;flex-direction:column;gap:100px;">
+  <div class="root" style="display: flex;flex-direction:column;gap:50px;">
     <div class="container"
-      style="border: 2px solid grey; width: 98dvw; aspect-ratio: 16/9; margin:50px auto;border-radius: 5px;">
-      <!-- <canvas id="debugCanvas" style="height: 100%;width: 100%;"></canvas> -->
-      <div id="debugCanvas" class="center valign-wrapper" style="height: 100%;width: 100%;">
-        <span id="finger" style="width: 100%;display: inline-block;font-size: 3rem;">👆</span>
+      style="position: relative; border: 2px solid grey; width: 98dvw; aspect-ratio: 16/9; margin:80px auto 20px;border-radius: 5px;">
+      <div id="debugCanvas" class="center valign-wrapper" style="height: 100%;width: 100%;transition: all .1s ease;">
+        <span id="fingerContainer" style="width: 100%;display: inline-block;font-size: 3rem;">
+          <span id="finger">
+            👆
+          </span>
+        </span>
       </div>
     </div>
     <div class="container center">
       <div>
         <button id="reset-scale" class="btn-large indigo waves-effect waves-light">↑真ん中はここ（まっすぐ前に向ける）↑</button>
       </div>
-      <div style="margin-top: 120px;">
+      <div style="margin-top: 70px;">
         <label for="sensitivity">感度</label>
         <input type="range" id="sensitivity" min="0" max="10" step="1" />
       </div>
+      <label>
+        <input type="checkbox" id="enableVibe" />
+        <span>バイブ</span>
+      </label>
     </div>
     <div class="debug container">
       <div id="orientation">waiting for orientation...</div>
@@ -62,7 +68,7 @@
       const yDiffPx = -sinDegrees((currentBeta - originBeta + 180) % 360 - 180) * sensitivity * 40;
       // console.log(parseInt(xDiffPx));
       // id("finger").style.transform = `translateX(${xDiffPx}px) translateY(${yDiffPx}px) rotate(${currentGamma - originGamma}deg)`;
-      id("finger").style.transform = `translateY(${yDiffPx}px) rotate(${currentGamma - originGamma}deg)`;
+      id("fingerContainer").style.transform = `translateY(0%) translateY(${yDiffPx}px) rotate(${currentGamma - originGamma}deg)`;
 
       id("alphaBar").style.width = `${(360 - currentAlpha) / 360 * 100}px`;
     }
@@ -81,6 +87,33 @@
     function sinDegrees(angleDegrees) {
       return Math.sin(angleDegrees * Math.PI / 180);
     };
+
+    let enableVibe = false;
+
+    id("enableVibe").onchange = (e) => {
+      enableVibe = e.target.checked;
+      if (enableVibe) {
+        window.navigator.vibrate(100);
+      }
+    }
+
+    const intersectCallback = (entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          id("debugCanvas").style.backgroundColor = "transparent";
+          id("debugCanvas").style.borderWidth = "2px";
+          if (enableVibe) window.navigator.vibrate(100);
+        } else {
+          id("debugCanvas").style.backgroundColor = "lightgrey";
+          id("debugCanvas").style.borderWidth = "1px";
+          if (enableVibe) window.navigator.vibrate(100);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(intersectCallback, { root: id("debugCanvas"), threshold: .6 });
+
+    observer.observe(id("finger"));
   </script>
 </body>
 
