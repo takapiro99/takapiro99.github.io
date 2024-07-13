@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>wiii prototype</title>
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+
+<body>
+  <!-- 2 sliders -->
+  <div class="root" style="display: flex;flex-direction:column;gap:100px;">
+    <div class="container"
+      style="border: 2px solid grey; width: 98dvw; aspect-ratio: 16/9; margin:50px auto;border-radius: 5px;">
+      <!-- <canvas id="debugCanvas" style="height: 100%;width: 100%;"></canvas> -->
+      <div id="debugCanvas" class="center valign-wrapper" style="height: 100%;width: 100%;">
+        <span id="finger" style="width: 100%;display: inline-block;font-size: 3rem;">👆</span>
+      </div>
+    </div>
+    <div class="container center">
+      <div>
+        <button id="reset-scale" class="btn-large indigo waves-effect waves-light">↑真ん中はここ（まっすぐ前に向ける）↑</button>
+      </div>
+      <div style="margin-top: 120px;">
+        <label for="sensitivity">感度</label>
+        <input type="range" id="sensitivity" min="0" max="10" step="1" />
+      </div>
+    </div>
+    <div class="debug container">
+      <div id="orientation">waiting for orientation...</div>
+    </div>
+  </div>
+  <script>
+    let currentAlpha, currentBeta, currentGamma;
+    let originAlpha, originBeta, originGamma;
+    currentAlpha = currentBeta = currentGamma = originAlpha = originBeta = originGamma = 0;
+
+    const id = (id) => document.getElementById(id)
+    if (window.DeviceOrientationEvent) {
+      window.addEventListener("deviceorientation",
+        (e) => {
+          id("orientation").innerHTML = `<ul><li>画面に水平: ${parseInt(360 - (e.alpha))}<div id="alphaBar" style="background:orange;display:inline-block;">alpha</div></li><li>画面の縦に垂直: ${parseInt(e.beta)}</li><li>画面の横に垂直: ${parseInt(e.gamma)}</li></ul>`;
+          currentAlpha = e.alpha;
+          currentBeta = e.beta;
+          currentGamma = e.gamma;
+          draw();
+        },
+        true
+      );
+    } else {
+      alert("orientation not supported");
+    }
+
+    function draw() {
+      const sensitivity = id("sensitivity").value;
+      const xDiffPx = -((currentAlpha - originAlpha + 180) % 360 - 180); // -180~180
+      const yDiffPx = -sinDegrees((currentBeta - originBeta + 180) % 360 - 180) * sensitivity * 40;
+      // console.log(parseInt(xDiffPx));
+      // id("finger").style.transform = `translateX(${xDiffPx}px) translateY(${yDiffPx}px) rotate(${currentGamma - originGamma}deg)`;
+      id("finger").style.transform = `translateY(${yDiffPx}px) rotate(${currentGamma - originGamma}deg)`;
+
+      id("alphaBar").style.width = `${(360 - currentAlpha) / 360 * 100}px`;
+    }
+
+    function reset() {
+      originAlpha = currentAlpha;
+      originBeta = currentBeta;
+      originGamma = currentGamma;
+      draw()
+    }
+
+    id("reset-scale").onclick = () => {
+      reset()
+    }
+
+    function sinDegrees(angleDegrees) {
+      return Math.sin(angleDegrees * Math.PI / 180);
+    };
+  </script>
+</body>
+
+</html>
