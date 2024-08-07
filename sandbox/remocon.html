@@ -26,7 +26,7 @@
     </div>
     <div class="container center">
       <div>
-        <button id="reset-scale" class="btn-large indigo waves-effect waves-light">↑真ん中はここ（まっすぐ前に向ける）↑</button>
+        <button id="reset-scale" class="btn-large indigo waves-effect waves-light">↑真ん中はここ〜（まっすぐ前に向ける）↑</button>
       </div>
       <div style="margin-top: 70px;">
         <label for="sensitivity">感度</label>
@@ -39,12 +39,43 @@
     </div>
     <div class="debug container">
       <div id="orientation">waiting for orientation...</div>
+      <div>
+        <button type='button' class='btn red' onclick='req()'>request for permission</button>
+      </div>
     </div>
   </div>
   <script>
     let currentAlpha, currentBeta, currentGamma;
     let originAlpha, originBeta, originGamma;
     currentAlpha = currentBeta = currentGamma = originAlpha = originBeta = originGamma = 0;
+
+    const req = () => {
+      if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+        DeviceOrientationEvent.requestPermission()
+          .then(permissionState => {
+            alert("permitted")
+            if (permissionState === 'granted') {
+              window.addEventListener('deviceorientation', () => { });
+            }
+          })
+          .catch((e) => { console.error(e); alert("not permitted", e) });
+      } else {
+        // handle regular non iOS 13+ devices
+        alert("no permission to request2")
+        console.log("no permission to request2");
+      }
+    }
+
+    window.onload = () => {
+      console.log("load");
+      setTimeout(() => {
+        if (currentAlpha === 0) {
+          console.log("load");
+          document.getElementById("orientation").innerHTML += "<br/><br/>looks like no DeviceMotion captured...";
+          // document.getElementById("orientation").innerHTML += "<button type='button' class='btn red' onclick='req()'>request for permission</button>";
+        }
+      }, 3000);
+    }
 
     const id = (id) => document.getElementById(id)
     if (window.DeviceOrientationEvent) {
