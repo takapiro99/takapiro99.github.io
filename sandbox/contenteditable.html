@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #box {
+        border: solid 2px blue;
+        border-radius: 2px;
+        padding: 2px 5px;
+      }
+      body {
+        /* background: darkslategray */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- <p id="box" contenteditable="true" oninput="handleInput(event)"><span>rrr</span>sss<span>rrr</span></p> -->
+      <p id="box" contenteditable="true" oninput="handleInput(event)"></p>
+    </div>
+    <script>
+      const box = document.getElementById("box");
+      let offset = 0;
+      const handleInput = (e) => {
+        const offset = getCursorPos(box);
+        // 加工
+        d = box.innerHTML;
+        box.innerHTML = "";
+        box.innerHTML = d
+          .split(/(r)/)
+          .map((s) => {
+            if (s === "r") return getFancySpanFromStr(s);
+            else return s;
+          })
+          .join("");
+
+        restoreCursorPos(box, offset);
+        // // console.log(text);
+        // // console.log(window.getSelection())
+        // console.log(selection);
+        // if (selection.rangeCount > 0) {
+        //   offset = selection.anchorOffset;
+        //   console.log("offset set to ", offset);
+        // }
+        // do something with dom
+        //
+        // const textContent = box.textContent;
+        // const c = textContent.split(/(r)/);
+        // const str = c.map((s) => {
+        //   if (s === "r") return "<span>r</span>";
+        //   else return s;
+        // });
+        // box.innerHTML = "";
+        // box.innerHTML = str.join("");
+        // restoreCursorPos();
+      };
+      const getCursorPos = (element) => {
+        offset = 0;
+        const selection = window.getSelection();
+        console.log(element.childNodes);
+        for (let elem of element.childNodes) {
+          let finalElem = elem;
+          while (finalElem.hasChildNodes()) {
+            finalElem = finalElem.firstChild;
+          }
+          console.log("final", finalElem);
+          if (finalElem.textContent == selection.anchorNode.textContent) {
+            offset += selection.anchorOffset;
+            break;
+          } else {
+            offset += finalElem.textContent.length;
+          }
+        }
+        console.log({ offset });
+        return offset;
+      };
+
+      const getFinalChild = (elem) => {
+        let finalElem = elem;
+        while (finalElem.hasChildNodes()) {
+          finalElem = finalElem.firstChild;
+        }
+        return finalElem;
+      };
+
+      const getFancySpanFromStr = (str) => {
+        return `<span class="fancy">${str}</span>`;
+      };
+
+      const restoreCursorPos = (element, offsetToRestore) => {
+        const selection = window.getSelection();
+        let _offset = offset;
+        let currentNode;
+        let prevNode;
+        for (let elem of element.childNodes) {
+          if (_offset > elem.textContent.length) {
+            console.log(
+              "offset was",
+              _offset,
+              "and this elem has length:",
+              elem.textContent.length
+            );
+            _offset -= elem.textContent.length;
+            console.log("go next element", elem, _offset);
+          } else {
+            console.log("finally this element:", elem, "offset to", _offset);
+            console.log("last element was:", getFinalChild(elem));
+            selection.collapse(getFinalChild(elem), _offset);
+            break;
+          }
+        }
+      };
+
+
+
+
+
+
+
+
+
+
+      function setCaretPosition(element, offset) {
+  var doc = element.ownerDocument || element.document;
+  var win = doc.defaultView || doc.parentWindow; // window
+
+  var range2 = doc.createRange();
+  var sel = win.getSelection();
+
+  //select appropriate node
+  var currentNode = null;
+  var previousNode = null;
+
+  // currentNode = element.childNodes[0].childNodes[0];
+  // console.log(currentNode);
+
+  // range2.setStart(currentNode, offset);
+  // range2.setStart(currentNode, 2);
+  // range2.collapse(true);
+  // sel.removeAllRanges();
+  // sel.addRange(range2);
+
+  // sel.collapseToStart();
+  // sel.collapse(currentNode, 3);
+
+  // console.log(element.childNodes);
+
+  for (let i = 0; i < element.childNodes.length; i++) {
+    // save previous node
+    previousNode = currentNode;
+    //get current node
+    currentNode = element.childNodes[i];
+    // if we get span or something else then we should get child node
+    while (currentNode.childNodes.length > 0) {
+      currentNode = currentNode.childNodes[0];
+    }
+    // calc offset in current node
+    if (previousNode != null) {
+      offset -= previousNode.length;
+    }
+    // check whether current node has enough length
+    if (offset <= currentNode.length) {
+      break;
+    }
+  }
+  // console.log("=========");
+  // console.log(currentNode);
+  // // move caret to specified offset
+  if (currentNode != null) {
+    // range.setStart(currentNode, offset);
+    // range2.selectNode(currentNode);
+    // range.collapse(true);
+    // sel.removeAllRanges();
+    // sel.addRange(range2);
+    // console.log(offset, "offset");
+    // sel.collapse(currentNode, 2);
+    // sel.selectAllChildren(currentNode);
+  }
+      };
+
+
+
+
+
+
+
+
+
+
+
+      
+    </script>
+  </body>
+</html>
+
+
+
+
+
+
+
+<!-- 
+var editor = document.getElementsByTagName("p").item(0);
+var button = document.getElementsByTagName("button").item(0);
+var button2 = document.getElementsByTagName("button").item(1);
+var button3 = document.getElementsByTagName("button").item(2);
+var button4 = document.getElementsByTagName("button").item(3);
+
+
+var sel = document.getSelection();
+var saved;
+
+editor.addEventListener('keypress', handleKeyPress);
+editor.addEventListener('keydown', handleKeyDown);
+button4.addEventListener('click', log);
+button.addEventListener('click', savePosition);
+button2.addEventListener('click', restorePosition);
+button3.addEventListener('click', change);
+
+function log() {
+  console.log(editor.childNodes);
+}
+
+function restorePosition() {
+  editor.focus();
+  //sel.extend(saved[0], saved[1]);
+  sel.collapse(saved[0], saved[1]);
+}
+
+function savePosition() {
+  saved = [ sel.focusNode, sel.focusOffset ];
+}
+
+function change() {
+  var text = editor.childNodes;
+   
+  for (var i = 0; i<text.length;i++) {
+
+    if (text[i].textContent === "base") {
+      var bold = document.createElement("span");
+      bold.classList.add("highlight");
+      bold.appendChild(document.createTextNode(text[i].textContent));
+      editor.replaceChild(bold, text[i]);
+    }
+  }
+}
+
+var lastCharSpace = false;
+
+function handleKeyDown(e) {
+  if (e.which === 32) {
+    lastCharSpace = true;
+    e.preventDefault();
+    var space = new Text('\u00A0');
+    
+    editor.appendChild(space);
+        sel.collapse(space, 1);
+    
+  } 
+}
+
+function handleKeyPress(e) {
+  change();
+   if (lastCharSpace) {
+    e.preventDefault();
+    lastCharSpace = false;
+    var newNode = new Text(String.fromCharCode(e.keyCode));
+    
+    editor.appendChild(newNode);
+    
+    sel.collapse(newNode, 1);
+  }
+} -->
+
+
+
+<!-- next -->
+
+
+
+
+
+<!-- 
+
+import "./styles.css";
+import { useLayoutEffect, useRef, useState } from "react";
+// https://stackoverflow.com/questions/26139475/restore-cursor-position-after-changing-contenteditable
+export default function App() {
+  const [v, setV] = useState();
+  const [caretPos, setCaretPos] = useState(0);
+  const ref = useRef();
+  useLayoutEffect(() => {
+    setCaretPos(getCaretCharacterOffsetWithin(ref.current));
+  }, [v]);
+  return (
+    <div className="App">
+      <h1>sushi</h1>
+      <div style={{ width: "200px", margin: "0 auto", textAlign: "left" }}>
+        <ul>
+          <li>まぐろ</li>
+        </ul>
+      </div>
+      <div>
+        preview：
+        <p>&nbsp;{v}</p>
+      </div>
+      <div>
+        preview with color：
+        <p>
+          &nbsp;
+          {v
+            ? v.split(/(sushi)/).map((s) => {
+                if (s === "sushi") {
+                  return <Mark text={s} />;
+                } else {
+                  return <span>{s}</span>;
+                }
+              })
+            : ""}
+        </p>
+      </div>
+      <br />
+      <div>普通の input</div>
+      <input value={v} onChange={(e) => setV(e.target.value)} />
+      <div
+        style={{
+          marginTop: "50px",
+          borderTop: "2px solid skyblue",
+          padding: "10px"
+        }}
+      >
+        色もつく input?
+        <p
+          ref={ref}
+          contentEditable
+          style={{
+            border: "solid grey 2px",
+            width: "200px",
+            textAlign: "left",
+            margin: "0 auto",
+            padding: "1px 5px"
+          }}
+          onInput={(e) => {
+            setV(e.target.textContent);
+            setCaretPosition(e.target, getCaretCharacterOffsetWithin(e.target));
+            // setCaretPos(getCaretCharacterOffsetWithin(e.target));
+          }}
+          // onKeyUp={(e) => {
+          //   console.log("press");
+
+          // }}
+        >
+          {v
+            ? v.split(/(sushi)/).map((s) => {
+                if (s === "sushi") {
+                  return <Mark text={s} />;
+                } else {
+                  return <span>{s}</span>;
+                }
+              })
+            : ""}
+        </p>
+        {caretPos}
+      </div>
+    </div>
+  );
+}
+
+const Mark = ({ text }) => {
+  return (
+    <span
+      style={{
+        border: "solid 2px orange",
+        borderRadius: "2px",
+        background: "pink"
+      }}
+    >
+      {text}
+    </span>
+  );
+};
+
+function getCaretCharacterOffsetWithin(element) {
+  var caretOffset = 0;
+  var doc = element.ownerDocument || element.document;
+  var win = doc.defaultView || doc.parentWindow; // window
+  let sel;
+  sel = win.getSelection();
+  if (sel.rangeCount > 0) {
+    var range = win.getSelection().getRangeAt(0);
+    var preCaretRange = range.cloneRange();
+    preCaretRange.selectNodeContents(element);
+    preCaretRange.setEnd(range.endContainer, range.endOffset);
+    caretOffset = preCaretRange.toString().length;
+  }
+  return caretOffset;
+}
+
+function setCaretPosition(element, offset) {
+  var doc = element.ownerDocument || element.document;
+  var win = doc.defaultView || doc.parentWindow; // window
+
+  var range2 = doc.createRange();
+  var sel = win.getSelection();
+
+  //select appropriate node
+  var currentNode = null;
+  var previousNode = null;
+
+  currentNode = element.childNodes[0].childNodes[0];
+  console.log(currentNode);
+
+  // range2.setStart(currentNode, offset);
+  range2.setStart(currentNode, 2);
+  range2.collapse(true);
+  sel.removeAllRanges();
+  sel.addRange(range2);
+
+  // sel.collapseToStart();
+  // sel.collapse(currentNode, 3);
+
+  // console.log(element.childNodes);
+
+  // for (let i = 0; i < element.childNodes.length; i++) {
+  //   // save previous node
+  //   previousNode = currentNode;
+  //   //get current node
+  //   currentNode = element.childNodes[i];
+  //   // if we get span or something else then we should get child node
+  //   while (currentNode.childNodes.length > 0) {
+  //     currentNode = currentNode.childNodes[0];
+  //   }
+  //   // calc offset in current node
+  //   if (previousNode != null) {
+  //     offset -= previousNode.length;
+  //   }
+  //   // check whether current node has enough length
+  //   if (offset <= currentNode.length) {
+  //     break;
+  //   }
+  // }
+  // console.log("=========");
+  // console.log(currentNode);
+  // // move caret to specified offset
+  // if (currentNode != null) {
+  //   // range.setStart(currentNode, offset);
+  //   range2.selectNode(currentNode);
+  //   // range.collapse(true);
+  //   // sel.removeAllRanges();
+  //   sel.addRange(range2);
+  //   // console.log(offset, "offset");
+  //   // sel.collapse(currentNode, 2);
+  //   sel.selectAllChildren(currentNode);
+  // }
+} -->
