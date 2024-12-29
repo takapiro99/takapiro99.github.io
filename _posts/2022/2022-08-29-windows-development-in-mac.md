@@ -77,7 +77,7 @@ server {
 
 すると、無事プレビューできるように :tada:
 
-![image](/assets//2022/parallels-dev.png)
+![image](/assets/2022/parallels-dev.png)
 
 ### 感想
 
