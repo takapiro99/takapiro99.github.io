@@ -23,8 +23,9 @@ layout: default
   <h1>{{ page.title }}</h1>
   <div class="entry">
     {{ content }}
-  </div>
-  <div style="height:100px">&nbsp;</div>
+  </div>  
+
+  <div style="height:50px">&nbsp;</div>
   <div class="date">
     <i class="fa fa-calendar fa-fw" aria-hidden="true"></i>&nbsp;Date:<span
       style="color: #333333; font-weight: normal;">&nbsp;{{ page.date | date: "%B %e, %Y" }}</span>
@@ -55,6 +56,8 @@ layout: default
   <div class="post-nav">
     {% include post-nav.html %}
   </div>
+  <div style="height:50px;margin-bottom: 50px;">&nbsp;</div>
+  <div id="disqus_thread"></div>
 
 </article>
 

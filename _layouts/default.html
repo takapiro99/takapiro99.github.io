@@ -64,6 +64,15 @@
       media="print"
       onload="this.media='all'"
     />
+
+    <!-- dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/react@18/umd/react.production.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react-is@latest/umd/react-is.production.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/styled-components@5/dist/styled-components.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@microlink/mql@latest/dist/mql.min.js"></script>
+    <!-- Microlink SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@microlink/vanilla@latest/dist/microlink.min.js"></script>
   </head>
 
   <body>
@@ -209,5 +218,28 @@
       defer
       src="//platform.twitter.com/widgets.js"
     ></script>
+
+    <script>
+      document.addEventListener(
+        "DOMContentLoaded",
+        // used in _includes/linkpreview.html
+        () => microlink(".link-previews")
+      );
+    </script>
+
+    <script>
+      var disqus_config = function () {
+        this.page.url = "{{ site.url }}{{ page.url }}"; // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = "{{ page.url }}"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      };
+      (function () {
+        // DON'T EDIT BELOW THIS LINE
+        var d = document,
+          s = d.createElement("script");
+        s.src = "https://takapiro99.disqus.com/embed.js";
+        s.setAttribute("data-timestamp", +new Date());
+        (d.head || d.body).appendChild(s);
+      })();
+    </script>
   </body>
 </html>
